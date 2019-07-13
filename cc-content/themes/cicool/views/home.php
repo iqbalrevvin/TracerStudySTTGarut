@@ -5,10 +5,12 @@
      <header>
       <div class="header-content" >
          <div class="header-content-inner">
-            <h1 id="homeHeading">Thanks for buying cicool builder</h1>
+            <h1 id="homeHeading">Selamat Datang Di<br>Sistem Tracer Study STT Garut</h1>
             <hr>
-            <p> you can customize this page by editing this on location <br><code><?=  './cc-content/themes/cicool/view/home.php' ?> </code></p>
-            <a href="https://github.com/ridwanskaterock/cicool/issues" class="btn btn-primary btn-xl page-scroll" target="blank"><i class="fa fa-github"></i> Support</a>
+            <p> Tracer study adalah penelitian mengenai situasi alumni khususnya dalam hal pencarian kerja, situasi kerja, dan pemanfaatan pemerolehan kompetensi selama kuliah.<br>
+            <!-- <code><?=  './cc-content/themes/cicool/view/home.php' ?> </code></p> -->
+            <br>
+            <a href="#" class="btn btn-primary btn-xl page-scroll" target="blank"><i class="fa fa-list-alt"></i> Form Tracer Study</a>
          </div>
       </div>
    </header>
