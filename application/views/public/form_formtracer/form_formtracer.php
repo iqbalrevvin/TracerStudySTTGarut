@@ -88,7 +88,7 @@
     Submit
     </button>
     <span class="loading loading-hide">
-    <img src="http://192.168.1.15:80/TracerStudyMaster/asset//img/loading-spin-primary.svg"> 
+    <img src="http://localhost/TracerStudySTTGarut/asset//img/loading-spin-primary.svg"> 
     <i>Loading, Submitting data</i>
     </span>
 </div>

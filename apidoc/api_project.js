@@ -1,8 +1,8 @@
 define({
-  "name": "Cicool Documentation",
+  "name": "API Documentation",
   "version": "0.1.0",
-  "description": "API DOC Cicool",
-  "title": "Cicool application",
+  "description": "API DOC Tracer Study",
+  "title": "Tracer Study application",
   "url": "",
   "sampleUrl": false,
   "apidoc": "0.2.0",

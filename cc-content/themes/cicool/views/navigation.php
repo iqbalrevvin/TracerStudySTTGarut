@@ -36,15 +36,7 @@
                     </div>
                 </li>
                 <?php endif; ?>
-                <li class="dropdown ">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                 <span class="flag-icon <?=get_current_initial_lang(); ?>"></span> <?= get_current_lang(); ?> </a>
-                 <ul class="dropdown-menu" role="menu">
-                 <?php foreach (get_langs() as $lang): ?>
-                    <li><a href="<?= site_url('web/switch_lang/'.$lang['folder_name']); ?>"><span class="flag-icon <?= $lang['icon_name']; ?>"></span> <?= $lang['name']; ?></a></li>
-                  <?php endforeach; ?>
-                 </ul>
-              </li>
+               
             </ul>
         </div>
         <!-- /.navbar-collapse -->

@@ -31,8 +31,7 @@
 <section class="content">
     <div class="row">
       <?php cicool()->eventListen('dashboard_content_top'); ?>
-
-       <div class="col-md-3 col-sm-6 col-xs-12">
+       <!-- <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box button" onclick="goUrl('administrator/crud')">
                 <span class="info-box-icon bg-aqua">
                     <i class="ion ion-ios-gear">
@@ -84,8 +83,7 @@
                     </span>
                 </div>
             </div>
-        </div>
-
+        </div> -->
     </div>
   
       <!-- /.row -->

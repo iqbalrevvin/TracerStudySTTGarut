@@ -82,14 +82,14 @@
     <?= form_close(); ?>
 
     <!-- /.social-auth-links -->
-
+<!-- 
     <a href="<?= site_url('administrator/forgot-password'); ?>"><?= cclang('i_forgot_my_password'); ?></a><br>
     <a href="<?= site_url('administrator/register'); ?>" class="text-center"><?= cclang('register_a_new_membership'); ?></a>
   
     <br>
     <br>
     <p align="center"><b>-<?= cclang('or') ?>-</b></p>
-    <a href="<?= site_url('oauth/v/google'); ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> <?= cclang('sign_in_using') ?> Google+</a>
+    <a href="<?= site_url('oauth/v/google'); ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> <?= cclang('sign_in_using') ?> Google+</a> -->
 
   </div>
   <!-- /.login-box-body -->

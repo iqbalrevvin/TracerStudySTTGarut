@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'smkikakartika.sch.id',
 	'username' => 'smkikaka',
 	'password' => 'Iqz220195',
 	'database' => 'smkikaka_tracer',
