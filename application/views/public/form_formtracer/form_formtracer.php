@@ -84,8 +84,8 @@
 <div class="col-sm-2">
 </div>
 <div class="col-sm-8 padding-left-0">
-    <button class="btn btn-flat btn-primary btn_save" id="btn_save" data-stype='stay'>
-    Submit
+    <button class="btn btn-flat btn-primary btn_save" id="btn_save" data-stype='stay' onclick="myFunction()">
+    Kirim
     </button>
     <span class="loading loading-hide">
     <img src="http://localhost/TracerStudySTTGarut/asset//img/loading-spin-primary.svg"> 
@@ -110,21 +110,22 @@
 
     
       $('.btn_save').click(function(){
-        $('.message').fadeOut();
-            
-        var form_form_formtracer = $('#form_form_formtracer');
-        var data_post = form_form_formtracer.serializeArray();
-        var save_type = $(this).attr('data-stype');
+        var r = confirm("Formulir Akan Dikirim Ke Pihak CDC, Yakin Dengan Tindakan Ini?");
+          if (r == true) {
+            $('.message').fadeOut(); 
+            var form_form_formtracer = $('#form_form_formtracer');
+            var data_post = form_form_formtracer.serializeArray();
+            var save_type = $(this).attr('data-stype');
     
-        $('.loading').show();
+            $('.loading').show();
     
-        $.ajax({
-          url: BASE_URL + 'form/form_formtracer/submit',
-          type: 'POST',
-          dataType: 'json',
-          data: data_post,
-        })
-        .done(function(res) {
+            $.ajax({
+              url: BASE_URL + 'form/form_formtracer/submit',
+              type: 'POST',
+              dataType: 'json',
+              data: data_post,
+            })
+            .done(function(res) {
           if(res.success) {
             
             if (save_type == 'back') {
@@ -141,21 +142,23 @@
             $('.message').printMessage({message : res.message, type : 'warning'});
           }
     
-        })
-        .fail(function() {
-          $('.message').printMessage({message : 'Error save data', type : 'warning'});
-        })
-        .always(function() {
-          $('.loading').hide();
-          $('html, body').animate({ scrollTop: $(document).height() }, 1000);
-        });
-    
+            })
+            .fail(function() {
+              $('.message').printMessage({message : 'Error save data', type : 'warning'});
+            })
+            .always(function() {
+              $('.loading').hide();
+              $('html, body').animate({ scrollTop: $(document).height() }, 1000);
+            });
+          }
         return false;
       }); /*end btn save*/
 
 
       $('#alamat_rumah').addressPickerByGiro({distanceWidget: true});
-      
+      function myFunction() {
+  confirm("Press a button!");
+}
              
            
     }); /*end doc ready*/

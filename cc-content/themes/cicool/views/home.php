@@ -10,7 +10,7 @@
             <p> Tracer study adalah penelitian mengenai situasi alumni khususnya dalam hal pencarian kerja, situasi kerja, dan pemanfaatan pemerolehan kompetensi selama kuliah.<br>
             <!-- <code><?=  './cc-content/themes/cicool/view/home.php' ?> </code></p> -->
             <br>
-            <a href="#" class="btn btn-primary btn-xl page-scroll" target="blank"><i class="fa fa-list-alt"></i> Form Tracer Study</a>
+            <a href="<?= base_url('page/tracer-responden') ?>" class="btn btn-primary btn-xl page-scroll"><i class="fa fa-list-alt"></i> Form Tracer Study</a>
          </div>
       </div>
    </header>
