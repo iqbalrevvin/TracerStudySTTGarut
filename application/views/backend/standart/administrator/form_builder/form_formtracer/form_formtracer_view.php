@@ -57,50 +57,114 @@ jQuery(document).ready(domo);
                   <div class="form-horizontal" name="form_form_formtracer" id="form_form_formtracer" >
                    
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">NPM </label>
+                  <label for="content" class="col-sm-2 control-label">Nomor Mahasiswa </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->npm); ?>
+                           <?= _ent($form_formtracer->nomor_mahasiswa); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Email </label>
+                  <label for="content" class="col-sm-2 control-label">Kode PT </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->email); ?>
+                           <?= _ent($form_formtracer->kode_pt); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">No. Hp </label>
+                  <label for="content" class="col-sm-2 control-label">Tahun Lulus </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->no_hp); ?>
+                           <?= _ent($form_formtracer->tahun_lulus); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Nama Depan </label>
+                  <label for="content" class="col-sm-2 control-label">Kode Prodi </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->nama_depan); ?>
+                           <?= _ent($form_formtracer->kode_prodi); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Nama Belakang </label>
+                  <label for="content" class="col-sm-2 control-label">Nama </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->nama_belakang); ?>
+                           <?= _ent($form_formtracer->nama); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Alamat Rumah </label>
+                  <label for="content" class="col-sm-2 control-label">Nomor Telephone/ Handphone </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->alamat_rumah); ?>
+                           <?= _ent($form_formtracer->nomor_telephone_handphone); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Alamat Email </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->alamat_email); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Sebutkan Sumber Dana Dalam Pembiayaan Kuliah? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->sebutkan_sumber_dana_dalam_pembiayaan_kuliah_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Perkuliahan </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->perkuliahan); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Demonstrasi </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->demonstrasi); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Input123 </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->input123); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Custom Option1 </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->custom_option1); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Custom Option2 </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->custom_option2); ?>
                         </div>
                     </div>
                                         

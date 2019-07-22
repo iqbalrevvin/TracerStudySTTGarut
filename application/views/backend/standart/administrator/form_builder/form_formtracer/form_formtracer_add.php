@@ -1,6 +1,3 @@
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCOi5vktJx2fjOA4X9orhT_-v2SIvsv060 "></script>
-<script src="<?= BASE_ASSET; ?>jquery-map/dist/jquery.addressPickerByGiro.js"></script>
-<link href="http://192.168.1.15:80/TracerStudyMaster/asset/jquery-map/dist/jquery.addressPickerByGiro.css" rel="stylesheet" media="screen">
 
 <script src="<?= BASE_ASSET; ?>/js/jquery.hotkeys.js"></script>
 <script type="text/javascript">

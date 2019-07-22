@@ -1,6 +1,3 @@
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB3BwbuCW4JSDUb8FdU34xLfsLtn5HsU_g"></script>
-<script src="<?= BASE_ASSET; ?>jquery-map/dist/jquery.addressPickerByGiro.js"></script>
-<link href="<?= BASE_ASSET; ?>jquery-map/dist/jquery.addressPickerByGiro.css" rel="stylesheet" media="screen">
 
 <script src="<?= BASE_ASSET; ?>js/custom.js"></script>
 
@@ -14,67 +11,271 @@
 ]); ?>
  
 <div class="form-group ">
-    <label for="npm" class="col-sm-2 control-label">NPM 
+    <label for="nomor_mahasiswa" class="col-sm-2 control-label">Nomor Mahasiswa 
     <i class="required">*</i>
     </label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" name="npm" id="npm" placeholder=""  >
+        <input type="number" class="form-control" name="nomor_mahasiswa" id="nomor_mahasiswa" placeholder=""  >
         <small class="info help-block">
-        <b>Format NPM must</b> Valid Number,  <b>Input NPM</b> Max Length : 7.</small>
+        <b>Input Nomor Mahasiswa</b> Max Length : 7.</small>
     </div>
 </div>
  
 <div class="form-group ">
-    <label for="email" class="col-sm-2 control-label">Email 
+    <label for="kode_pt" class="col-sm-2 control-label">Kode PT 
     <i class="required">*</i>
     </label>
     <div class="col-sm-8">
-        <input type="email" class="form-control" name="email" id="email" placeholder=""  >
+        <input type="text" class="form-control" name="kode_pt" id="kode_pt" placeholder=""  >
         <small class="info help-block">
-        <b>Format Email must</b> Valid Email.</small>
+        <b>Format Kode PT must</b> Valid Number,  <b>Input Kode PT</b> Max Length : 6.</small>
     </div>
 </div>
  
 <div class="form-group ">
-    <label for="no_hp" class="col-sm-2 control-label">No. Hp 
+    <label for="tahun_lulus" class="col-sm-2 control-label">Tahun Lulus 
+    <i class="required">*</i>
     </label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder=""  >
+        <input type="number" class="form-control" name="tahun_lulus" id="tahun_lulus" placeholder=""  >
         <small class="info help-block">
-        <b>Format No. Hp must</b> Valid Number.</small>
+        <b>Input Tahun Lulus</b> Max Length : 4.</small>
     </div>
 </div>
  
 <div class="form-group ">
-    <label for="nama_depan" class="col-sm-2 control-label">Nama Depan 
+    <label for="kode_prodi" class="col-sm-2 control-label">Kode Prodi 
     <i class="required">*</i>
     </label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" name="nama_depan" id="nama_depan" placeholder=""  >
-        <small class="info help-block">
-        <b>Format Nama Depan must</b> Alpha,  <b>Input Nama Depan</b> Max Length : 100.</small>
-    </div>
-</div>
- 
-<div class="form-group ">
-    <label for="nama_belakang" class="col-sm-2 control-label">Nama Belakang 
-    <i class="required">*</i>
-    </label>
-    <div class="col-sm-8">
-        <input type="text" class="form-control" name="nama_belakang" id="nama_belakang" placeholder=""  >
-        <small class="info help-block">
-        <b>Format Nama Belakang must</b> Alpha,  <b>Input Nama Belakang</b> Max Length : 100.</small>
-    </div>
-</div>
- 
-<div class="form-group ">
-    <label for="alamat_rumah" class="col-sm-2 control-label">Alamat Rumah 
-    <i class="required">*</i>
-    </label>
-    <div class="col-sm-8">
-        <input autocomplete="off" type="text" class="form-control" name="alamat_rumah" id="alamat_rumah" placeholder=""  >
+        <input type="number" class="form-control" name="kode_prodi" id="kode_prodi" placeholder=""  >
         <small class="info help-block">
         </small>
+    </div>
+</div>
+ 
+<div class="form-group ">
+    <label for="nama" class="col-sm-2 control-label">Nama 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+        <input type="text" class="form-control" name="nama" id="nama" placeholder=""  >
+        <small class="info help-block">
+        <b>Input Nama</b> Max Length : 25.</small>
+    </div>
+</div>
+ 
+<div class="form-group ">
+    <label for="nomor_telephone_handphone" class="col-sm-2 control-label">Nomor Telephone/ Handphone 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+        <input type="number" class="form-control" name="nomor_telephone_handphone" id="nomor_telephone_handphone" placeholder=""  >
+        <small class="info help-block">
+        </small>
+    </div>
+</div>
+ 
+<div class="form-group ">
+    <label for="alamat_email" class="col-sm-2 control-label">Alamat Email 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+        <input type="email" class="form-control" name="alamat_email" id="alamat_email" placeholder=""  >
+        <small class="info help-block">
+        </small>
+    </div>
+</div>
+ 
+<div class="form-group ">
+    <label for="lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_" class="col-sm-2 control-label">Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama? 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+        <select  class="form-control chosen chosen-select" name="lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_" id="lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_" data-placeholder="Select Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama?" >
+            <option value=""></option>
+            <option value="6_Sampai_10_Bulan_Sebelum_Lulus">6 Sampai 10 Sulan Sebelum Lulus</option>
+            <option value="1_Sampai_5_Bulan_Sebelum_Lulus">1 Sampai 5 Bulan Sebelum Lulus</option>
+            <option value="Kurang_Dari_1_Bulan_Sebelum_Lulus">Kurang Dari 1 Bulan Sebelum Lulus</option>
+            <option value="Kurang_Dari_1_Bulan_Setelah_Lulus">Kurang Dari 1 Bulan Setelah Lulus</option>
+            <option value="1_Sampai_5_Bulan_Setelah_Lulus">1 Sampai 5 Bulan Setelah Lulus</option>
+            <option value="6_Sampai_10_Bulan_Setelah_Lulus">6 Sampai 10 Bulan Sebelum Lulus</option>
+            </select>
+        <small class="info help-block">
+        </small>
+    </div>
+</div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" class="col-sm-2 control-label">Sebutkan Sumber Dana Dalam Pembiayaan Kuliah? 
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[1]_Biaya_Sendiri_/_Keluarga" > [1] Biaya Sendiri / Keluarga            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[2]_Beasiswa_ADIK" > [2] Beasiswa ADIK            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[3]_Beasiswa_Bidikmisi" > [3] Beasiswa Bidikmisi            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[4]_Beasiswa_PPA" > {4]_Beasiswa PPA            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[5]_Beasiswa_AFIRMASI" > [5] Beasiswa AFIRMASI            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[6]_Beasiswa_Perusahaan_/_Swasta" > [6] Beasiswa Perusahaan / Swasta            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
+    </div>
+</div>
+ 
+<div class="">
+    <div class="col-sm-14 col-md-offset-2">
+        <h1 >Menurut Anda Berapa Besar Penekanan Pada Metode Pembalejaran Di  Bawah Ini Dilaksanakan di Program Studi Anda</h1>
+    </div>
+    <hr>
+</div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="perkuliahan" class="col-sm-2 control-label">Perkuliahan 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="perkuliahan" value="Sangat Besar" > Sangat Besar            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="perkuliahan" value="Besar" > Besar            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="perkuliahan" value="Cukup Besar" > Cukup Besar            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="perkuliahan" value="Kurang" > Kurang            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="perkuliahan" value="Tidak Sama Sekali" > Tidak Sama Sekali            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
+    </div>
+</div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="demonstrasi" class="col-sm-2 control-label">Demonstrasi 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="demonstrasi" value="Sangat Besar" > Sangat Besar            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="demonstrasi" value="Besar" > Besar            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="demonstrasi" value="Cukup" > Cukup            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="demonstrasi" value="Kurang" > Kurang            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="demonstrasi" value="Sangat Kurang" > Sangat Kurang            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
+    </div>
+</div>
+ 
+<div class="form-group ">
+    <label for="input123" class="col-sm-2 control-label">Input123 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+        <input type="text" class="form-control" name="input123" id="input123" placeholder=""  >
+        <small class="info help-block">
+        </small>
+    </div>
+</div>
+ 
+<div class="">
+    <div class="col-sm-14 col-md-offset-2">
+        <h1 >Test Head2</h1>
+    </div>
+    <hr>
+</div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="custom_option1" class="col-sm-2 control-label">Custom Option1 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="custom_option1" value="1" > 1            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="custom_option1" value="2" > 2            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
+    </div>
+</div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="custom_option2" class="col-sm-2 control-label">Custom Option2 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="custom_option2" value="1" > 1            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="custom_option2" value="2" > 2            </label>
+            </div>
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="custom_option2" value="3" > 3            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
     </div>
 </div>
 
@@ -84,11 +285,11 @@
 <div class="col-sm-2">
 </div>
 <div class="col-sm-8 padding-left-0">
-    <button class="btn btn-flat btn-primary btn_save" id="btn_save" data-stype='stay' onclick="myFunction()">
-    Kirim
+    <button class="btn btn-flat btn-primary btn_save" id="btn_save" data-stype='stay'>
+    Submit
     </button>
     <span class="loading loading-hide">
-    <img src="http://localhost/TracerStudySTTGarut/asset//img/loading-spin-primary.svg"> 
+    <img src="http://localhost:80/TracerStudySTTGarut/asset//img/loading-spin-primary.svg"> 
     <i>Loading, Submitting data</i>
     </span>
 </div>
@@ -110,22 +311,21 @@
 
     
       $('.btn_save').click(function(){
-        var r = confirm("Formulir Akan Dikirim Ke Pihak CDC, Yakin Dengan Tindakan Ini?");
-          if (r == true) {
-            $('.message').fadeOut(); 
-            var form_form_formtracer = $('#form_form_formtracer');
-            var data_post = form_form_formtracer.serializeArray();
-            var save_type = $(this).attr('data-stype');
+        $('.message').fadeOut();
+            
+        var form_form_formtracer = $('#form_form_formtracer');
+        var data_post = form_form_formtracer.serializeArray();
+        var save_type = $(this).attr('data-stype');
     
-            $('.loading').show();
+        $('.loading').show();
     
-            $.ajax({
-              url: BASE_URL + 'form/form_formtracer/submit',
-              type: 'POST',
-              dataType: 'json',
-              data: data_post,
-            })
-            .done(function(res) {
+        $.ajax({
+          url: BASE_URL + 'form/form_formtracer/submit',
+          type: 'POST',
+          dataType: 'json',
+          data: data_post,
+        })
+        .done(function(res) {
           if(res.success) {
             
             if (save_type == 'back') {
@@ -142,23 +342,20 @@
             $('.message').printMessage({message : res.message, type : 'warning'});
           }
     
-            })
-            .fail(function() {
-              $('.message').printMessage({message : 'Error save data', type : 'warning'});
-            })
-            .always(function() {
-              $('.loading').hide();
-              $('html, body').animate({ scrollTop: $(document).height() }, 1000);
-            });
-          }
+        })
+        .fail(function() {
+          $('.message').printMessage({message : 'Error save data', type : 'warning'});
+        })
+        .always(function() {
+          $('.loading').hide();
+          $('html, body').animate({ scrollTop: $(document).height() }, 1000);
+        });
+    
         return false;
       }); /*end btn save*/
 
 
-      $('#alamat_rumah').addressPickerByGiro({distanceWidget: true});
-      function myFunction() {
-  confirm("Press a button!");
-}
+      
              
            
     }); /*end doc ready*/

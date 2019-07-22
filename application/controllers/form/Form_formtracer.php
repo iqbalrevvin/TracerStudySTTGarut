@@ -25,22 +25,37 @@ class Form_formtracer extends Admin
 	*/
 	public function submit()
 	{
-		$this->form_validation->set_rules('npm', 'NPM', 'trim|required|max_length[7]|callback_valid_number');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		$this->form_validation->set_rules('no_hp', 'No. Hp', 'trim|callback_valid_number');
-		$this->form_validation->set_rules('nama_depan', 'Nama Depan', 'trim|required|max_length[100]|alpha');
-		$this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'trim|required|max_length[100]|alpha');
-		$this->form_validation->set_rules('alamat_rumah', 'Alamat Rumah', 'trim|required');
+		$this->form_validation->set_rules('nomor_mahasiswa', 'Nomor Mahasiswa', 'trim|required|max_length[7]');
+		$this->form_validation->set_rules('kode_pt', 'Kode PT', 'trim|required|max_length[6]|callback_valid_number');
+		$this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus', 'trim|required|max_length[4]');
+		$this->form_validation->set_rules('kode_prodi', 'Kode Prodi', 'trim|required');
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[25]');
+		$this->form_validation->set_rules('nomor_telephone_handphone', 'Nomor Telephone/ Handphone', 'trim|required');
+		$this->form_validation->set_rules('alamat_email', 'Alamat Email', 'trim|required');
+		$this->form_validation->set_rules('lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_', 'Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama?', 'trim|required');
+		$this->form_validation->set_rules('perkuliahan', 'Perkuliahan', 'trim|required');
+		$this->form_validation->set_rules('demonstrasi', 'Demonstrasi', 'trim|required');
+		$this->form_validation->set_rules('input123', 'Input123', 'trim|required');
+		$this->form_validation->set_rules('custom_option1', 'Custom Option1', 'trim|required');
+		$this->form_validation->set_rules('custom_option2', 'Custom Option2', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 		
 			$save_data = [
-				'npm' => $this->input->post('npm'),
-				'email' => $this->input->post('email'),
-				'no_hp' => $this->input->post('no_hp'),
-				'nama_depan' => $this->input->post('nama_depan'),
-				'nama_belakang' => $this->input->post('nama_belakang'),
-				'alamat_rumah' => $this->input->post('alamat_rumah'),
+				'nomor_mahasiswa' => $this->input->post('nomor_mahasiswa'),
+				'kode_pt' => $this->input->post('kode_pt'),
+				'tahun_lulus' => $this->input->post('tahun_lulus'),
+				'kode_prodi' => $this->input->post('kode_prodi'),
+				'nama' => $this->input->post('nama'),
+				'nomor_telephone_handphone' => $this->input->post('nomor_telephone_handphone'),
+				'alamat_email' => $this->input->post('alamat_email'),
+				'lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_' => $this->input->post('lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_'),
+				'sebutkan_sumber_dana_dalam_pembiayaan_kuliah_' => $this->input->post('sebutkan_sumber_dana_dalam_pembiayaan_kuliah_'),
+				'perkuliahan' => $this->input->post('perkuliahan'),
+				'demonstrasi' => $this->input->post('demonstrasi'),
+				'input123' => $this->input->post('input123'),
+				'custom_option1' => $this->input->post('custom_option1'),
+				'custom_option2' => $this->input->post('custom_option2'),
 			];
 
 			
