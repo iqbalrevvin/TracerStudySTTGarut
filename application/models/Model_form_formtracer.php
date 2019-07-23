@@ -5,7 +5,7 @@ class Model_form_formtracer extends MY_Model {
 
 	private $primary_key 	= 'id';
 	private $table_name 	= 'form_formtracer';
-	private $field_search 	= ['nomor_mahasiswa', 'kode_pt', 'tahun_lulus', 'kode_prodi', 'nama', 'nomor_telephone_handphone', 'alamat_email', 'lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_', 'sebutkan_sumber_dana_dalam_pembiayaan_kuliah_', 'perkuliahan', 'demonstrasi', 'input123', 'custom_option1', 'custom_option2'];
+	private $field_search 	= ['nomor_mahasiswa', 'kode_pt', 'tahun_lulus', 'kode_prodi', 'nama', 'nomor_telephone_handphone', 'alamat_email', 'lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_', 'perkuliahan', 'demonstrasi'];
 
 	public function __construct()
 	{

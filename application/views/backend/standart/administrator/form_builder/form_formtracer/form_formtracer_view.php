@@ -121,14 +121,6 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Sebutkan Sumber Dana Dalam Pembiayaan Kuliah? </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($form_formtracer->sebutkan_sumber_dana_dalam_pembiayaan_kuliah_); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group option">               
                   <label for="content" class="col-sm-2 control-label">Perkuliahan </label>
 
                         <div class="col-sm-8">
@@ -141,30 +133,6 @@ jQuery(document).ready(domo);
 
                         <div class="col-sm-8">
                            <?= _ent($form_formtracer->demonstrasi); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Input123 </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($form_formtracer->input123); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Custom Option1 </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($form_formtracer->custom_option1); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Custom Option2 </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($form_formtracer->custom_option2); ?>
                         </div>
                     </div>
                                         

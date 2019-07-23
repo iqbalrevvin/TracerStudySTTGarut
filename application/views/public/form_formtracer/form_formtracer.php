@@ -107,49 +107,6 @@
 </div>
  
 <div class="form-group  wrapper-options-crud">
-    <label for="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" class="col-sm-2 control-label">Sebutkan Sumber Dana Dalam Pembiayaan Kuliah? 
-    </label>
-    <div class="col-sm-8">
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[1]_Biaya_Sendiri_/_Keluarga" > [1] Biaya Sendiri / Keluarga            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[2]_Beasiswa_ADIK" > [2] Beasiswa ADIK            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[3]_Beasiswa_Bidikmisi" > [3] Beasiswa Bidikmisi            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[4]_Beasiswa_PPA" > {4]_Beasiswa PPA            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[5]_Beasiswa_AFIRMASI" > [5] Beasiswa AFIRMASI            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_" value="[6]_Beasiswa_Perusahaan_/_Swasta" > [6] Beasiswa Perusahaan / Swasta            </label>
-            </div>
-            </select>
-        <div class="row-fluid clear-both">
-        <small class="info help-block">
-        </small>
-        </div>
-    </div>
-</div>
- 
-<div class="">
-    <div class="col-sm-14 col-md-offset-2">
-        <h1 >Menurut Anda Berapa Besar Penekanan Pada Metode Pembalejaran Di  Bawah Ini Dilaksanakan di Program Studi Anda</h1>
-    </div>
-    <hr>
-</div>
- 
-<div class="form-group  wrapper-options-crud">
     <label for="perkuliahan" class="col-sm-2 control-label">Perkuliahan 
     <i class="required">*</i>
     </label>
@@ -206,70 +163,6 @@
             <div class="col-md-3 padding-left-0">
             <label>
             <input type="radio" class="flat-red" name="demonstrasi" value="Sangat Kurang" > Sangat Kurang            </label>
-            </div>
-            </select>
-        <div class="row-fluid clear-both">
-        <small class="info help-block">
-        </small>
-        </div>
-    </div>
-</div>
- 
-<div class="form-group ">
-    <label for="input123" class="col-sm-2 control-label">Input123 
-    <i class="required">*</i>
-    </label>
-    <div class="col-sm-8">
-        <input type="text" class="form-control" name="input123" id="input123" placeholder=""  >
-        <small class="info help-block">
-        </small>
-    </div>
-</div>
- 
-<div class="">
-    <div class="col-sm-14 col-md-offset-2">
-        <h1 >Test Head2</h1>
-    </div>
-    <hr>
-</div>
- 
-<div class="form-group  wrapper-options-crud">
-    <label for="custom_option1" class="col-sm-2 control-label">Custom Option1 
-    <i class="required">*</i>
-    </label>
-    <div class="col-sm-8">
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="custom_option1" value="1" > 1            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="custom_option1" value="2" > 2            </label>
-            </div>
-            </select>
-        <div class="row-fluid clear-both">
-        <small class="info help-block">
-        </small>
-        </div>
-    </div>
-</div>
- 
-<div class="form-group  wrapper-options-crud">
-    <label for="custom_option2" class="col-sm-2 control-label">Custom Option2 
-    <i class="required">*</i>
-    </label>
-    <div class="col-sm-8">
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="custom_option2" value="1" > 1            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="custom_option2" value="2" > 2            </label>
-            </div>
-            <div class="col-md-3 padding-left-0">
-            <label>
-            <input type="radio" class="flat-red" name="custom_option2" value="3" > 3            </label>
             </div>
             </select>
         <div class="row-fluid clear-both">

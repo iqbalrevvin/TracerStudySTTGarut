@@ -81,12 +81,8 @@ jQuery(document).ready(domo);
                            <th>Nomor Telephone Handphone</th>
                            <th>Alamat Email</th>
                            <th>Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama </th>
-                           <th>Sebutkan Sumber Dana Dalam Pembiayaan Kuliah </th>
                            <th>Perkuliahan</th>
                            <th>Demonstrasi</th>
-                           <th>Input123</th>
-                           <th>Custom Option1</th>
-                           <th>Custom Option2</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -104,12 +100,8 @@ jQuery(document).ready(domo);
                            <td><?= _ent($form_formtracer->nomor_telephone_handphone); ?></td> 
                            <td><?= _ent($form_formtracer->alamat_email); ?></td> 
                            <td><?= _ent($form_formtracer->lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_); ?></td> 
-                           <td><?= _ent($form_formtracer->sebutkan_sumber_dana_dalam_pembiayaan_kuliah_); ?></td> 
                            <td><?= _ent($form_formtracer->perkuliahan); ?></td> 
                            <td><?= _ent($form_formtracer->demonstrasi); ?></td> 
-                           <td><?= _ent($form_formtracer->input123); ?></td> 
-                           <td><?= _ent($form_formtracer->custom_option1); ?></td> 
-                           <td><?= _ent($form_formtracer->custom_option2); ?></td> 
                            <td width="200">
                               <?php is_allowed('form_formtracer_view', function() use ($form_formtracer){?>
                               <a href="<?= site_url('administrator/form_formtracer/view/' . $form_formtracer->id); ?>" class="label-default"><i class="fa fa-newspaper-o"></i> <?= cclang('view_button'); ?>
@@ -161,12 +153,8 @@ jQuery(document).ready(domo);
                            <option <?= $this->input->get('f') == 'nomor_telephone_handphone' ? 'selected' :''; ?> value="nomor_telephone_handphone">Nomor Telephone Handphone</option>
                            <option <?= $this->input->get('f') == 'alamat_email' ? 'selected' :''; ?> value="alamat_email">Alamat Email</option>
                            <option <?= $this->input->get('f') == 'lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_' ? 'selected' :''; ?> value="lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_">Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama </option>
-                           <option <?= $this->input->get('f') == 'sebutkan_sumber_dana_dalam_pembiayaan_kuliah_' ? 'selected' :''; ?> value="sebutkan_sumber_dana_dalam_pembiayaan_kuliah_">Sebutkan Sumber Dana Dalam Pembiayaan Kuliah </option>
                            <option <?= $this->input->get('f') == 'perkuliahan' ? 'selected' :''; ?> value="perkuliahan">Perkuliahan</option>
                            <option <?= $this->input->get('f') == 'demonstrasi' ? 'selected' :''; ?> value="demonstrasi">Demonstrasi</option>
-                           <option <?= $this->input->get('f') == 'input123' ? 'selected' :''; ?> value="input123">Input123</option>
-                           <option <?= $this->input->get('f') == 'custom_option1' ? 'selected' :''; ?> value="custom_option1">Custom Option1</option>
-                           <option <?= $this->input->get('f') == 'custom_option2' ? 'selected' :''; ?> value="custom_option2">Custom Option2</option>
                           </select>
                      </div>
                      <div class="col-sm-1 padd-left-0 ">

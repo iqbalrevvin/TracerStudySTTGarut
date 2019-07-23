@@ -87,9 +87,6 @@ class Form_formtracer extends Admin
 		$this->form_validation->set_rules('lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_', 'Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama?', 'trim|required');
 		$this->form_validation->set_rules('perkuliahan', 'Perkuliahan', 'trim|required');
 		$this->form_validation->set_rules('demonstrasi', 'Demonstrasi', 'trim|required');
-		$this->form_validation->set_rules('input123', 'Input123', 'trim|required');
-		$this->form_validation->set_rules('custom_option1', 'Custom Option1', 'trim|required');
-		$this->form_validation->set_rules('custom_option2', 'Custom Option2', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 		
@@ -102,12 +99,8 @@ class Form_formtracer extends Admin
 				'nomor_telephone_handphone' => $this->input->post('nomor_telephone_handphone'),
 				'alamat_email' => $this->input->post('alamat_email'),
 				'lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_' => $this->input->post('lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_'),
-				'sebutkan_sumber_dana_dalam_pembiayaan_kuliah_' => $this->input->post('sebutkan_sumber_dana_dalam_pembiayaan_kuliah_'),
-							'perkuliahan' => $this->input->post('perkuliahan'),
+				'perkuliahan' => $this->input->post('perkuliahan'),
 				'demonstrasi' => $this->input->post('demonstrasi'),
-				'input123' => $this->input->post('input123'),
-							'custom_option1' => $this->input->post('custom_option1'),
-				'custom_option2' => $this->input->post('custom_option2'),
 			];
 
 			
