@@ -113,10 +113,50 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Lama Waktu Yang Di Habiskan Untuk Memperoleh Pekerjaan Pertama? </label>
+                  <label for="content" class="col-sm-2 control-label">Waktu Yang Dihabiskan Untuk Memeproleh Pekerjaan </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->lama_waktu_yang_di_habiskan_untuk_memperoleh_pekerjaan_pertama_); ?>
+                           <?= _ent($form_formtracer->waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Sebutkan Sumberdana Dalam Pembiayaan Kuliah? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Sedang Bekerja (termasuk Kerja Sambilan Dan Wirausaha) ? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Hubungan Antara Bidang Studi Dengan Pekerjaan Anda? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->hubungan_antara_bidang_studi_dengan_pekerjaan_anda_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Tingkat Pendidikan Yang Tepat/sesuai Untuk Pekerjaan Saat Ini? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kira-kira Berapa Pendapatan Anda Setiap Bulannya? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kira_kira_berapa_pendapatan_anda_setiap_bulannya_); ?>
                         </div>
                     </div>
                                          
@@ -129,10 +169,258 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group option">               
-                  <label for="content" class="col-sm-2 control-label">Demonstrasi </label>
+                  <label for="content" class="col-sm-2 control-label">Desmonstrasi </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($form_formtracer->demonstrasi); ?>
+                           <?= _ent($form_formtracer->desmonstrasi); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Partisipasi Dalam Proyek Riset </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->partisipasi_dalam_proyek_riset); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Magang </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->magang); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Praktikum </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->praktikum); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kerja Lapangan </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kerja_lapangan); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Diskusi </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->diskusi); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Mulai Mencari Pekerjaan, (pekerjaan Sambilan Tidak Dimasukan) </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bagaimana Cara Pekerjaan Tersebut? Jawaban Bisa Lebih Dari Satu </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Berapa Perusahaan Yang Dilamar (lewat Surat/email) </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->berapa_perusahaan_yang_dilamar_lewat_surat_email_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label"> Jumlah Perusahaan Yang Merespons Lamaran Anda? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->_jumlah_perusahaan_yang_merespons_lamaran_anda_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Jumlah Perusahaan Yang Mengundang Anda Untuk Wawancara? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bagaimana Situasi Anda Saat Ini? Jawaban Bisa Lebih Dari Satu </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Apakah Anda Aktif Mencari Pekerjaan Dalam 4 Minggu Terkahir? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Apa Jenis Perusahaan Tempat Anda Bekerja Sekarang? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Jika Pekerjaan Tidak Sesuai, Kenapa Mengambilnya? </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Pengetahuan Di Bidang Atau Disiplin Ilmu Anda </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->pengetahuan_di_bidang_atau_disiplin_ilmu_anda); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Pengetahuan Di Luar Bidang Atau Disiplin Ilmu Anda </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Pengetahuan Umum </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->pengetahuan_umum); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bahasa Inggris </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bahasa_inggris); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Ketrampilan Internet  </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->ketrampilan_internet_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Ketrampilan Komputer </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->ketrampilan_komputer); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Berpikir Kritis  </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->berpikir_kritis_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Ketrampilan Riset </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->ketrampilan_riset); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kemampuan Belajar </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kemampuan_belajar); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kemampuan Berkomunikasi </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kemampuan_berkomunikasi); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bekerja Di Bawah Tekanan </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bekerja_di_bawah_tekanan); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Manajemen Waktu </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->manajemen_waktu); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bekerja Secara Mandiri </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bekerja_secara_mandiri); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Bekerja Dalam Tim/bekerjasama Dengan Orang Lain </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->bekerja_dalam_tim_bekerjasama_dengan_orang_lain); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kemampuan Dalam Memecahkan Masalah </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kemampuan_dalam_memecahkan_masalah); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Negosiasi  </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->negosiasi_); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Kemampuan Untuk Terus Belajar Sepanjang Hayat </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->kemampuan_untuk_terus_belajar_sepanjang_hayat); ?>
                         </div>
                     </div>
                                         
