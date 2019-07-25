@@ -1221,6 +1221,23 @@
         </div>
     </div>
 </div>
+ 
+<div class="form-group  wrapper-options-crud">
+    <label for="input" class="col-sm-2 control-label">Input 
+    <i class="required">*</i>
+    </label>
+    <div class="col-sm-8">
+            <div class="col-md-3 padding-left-0">
+            <label>
+            <input type="radio" class="flat-red" name="input" value="1" > 1            </label>
+            </div>
+            </select>
+        <div class="row-fluid clear-both">
+        <small class="info help-block">
+        </small>
+        </div>
+    </div>
+</div>
 
 
 <div class="row col-sm-12 message">

@@ -423,6 +423,14 @@ jQuery(document).ready(domo);
                            <?= _ent($form_formtracer->kemampuan_untuk_terus_belajar_sepanjang_hayat); ?>
                         </div>
                     </div>
+                                         
+                    <div class="form-group option">               
+                  <label for="content" class="col-sm-2 control-label">Input </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($form_formtracer->input); ?>
+                        </div>
+                    </div>
                                         
                     <br>
                     <br>

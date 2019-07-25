@@ -119,6 +119,7 @@ jQuery(document).ready(domo);
                            <th>Kemampuan Dalam Memecahkan Masalah</th>
                            <th>Negosiasi </th>
                            <th>Kemampuan Untuk Terus Belajar Sepanjang Hayat</th>
+                           <th>Input</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -174,6 +175,7 @@ jQuery(document).ready(domo);
                            <td><?= _ent($form_formtracer->kemampuan_dalam_memecahkan_masalah); ?></td> 
                            <td><?= _ent($form_formtracer->negosiasi_); ?></td> 
                            <td><?= _ent($form_formtracer->kemampuan_untuk_terus_belajar_sepanjang_hayat); ?></td> 
+                           <td><?= _ent($form_formtracer->input); ?></td> 
                            <td width="200">
                               <?php is_allowed('form_formtracer_view', function() use ($form_formtracer){?>
                               <a href="<?= site_url('administrator/form_formtracer/view/' . $form_formtracer->id); ?>" class="label-default"><i class="fa fa-newspaper-o"></i> <?= cclang('view_button'); ?>
@@ -263,6 +265,7 @@ jQuery(document).ready(domo);
                            <option <?= $this->input->get('f') == 'kemampuan_dalam_memecahkan_masalah' ? 'selected' :''; ?> value="kemampuan_dalam_memecahkan_masalah">Kemampuan Dalam Memecahkan Masalah</option>
                            <option <?= $this->input->get('f') == 'negosiasi_' ? 'selected' :''; ?> value="negosiasi_">Negosiasi </option>
                            <option <?= $this->input->get('f') == 'kemampuan_untuk_terus_belajar_sepanjang_hayat' ? 'selected' :''; ?> value="kemampuan_untuk_terus_belajar_sepanjang_hayat">Kemampuan Untuk Terus Belajar Sepanjang Hayat</option>
+                           <option <?= $this->input->get('f') == 'input' ? 'selected' :''; ?> value="input">Input</option>
                           </select>
                      </div>
                      <div class="col-sm-1 padd-left-0 ">
