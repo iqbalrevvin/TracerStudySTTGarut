@@ -71,7 +71,6 @@ class Form_formtracer extends Admin
 		$this->form_validation->set_rules('kemampuan_dalam_memecahkan_masalah', 'Kemampuan Dalam Memecahkan Masalah', 'trim|required');
 		$this->form_validation->set_rules('negosiasi_', 'Negosiasi ', 'trim|required');
 		$this->form_validation->set_rules('kemampuan_untuk_terus_belajar_sepanjang_hayat', 'Kemampuan Untuk Terus Belajar Sepanjang Hayat', 'trim|required');
-		$this->form_validation->set_rules('input', 'Input', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 		
@@ -122,7 +121,6 @@ class Form_formtracer extends Admin
 				'kemampuan_dalam_memecahkan_masalah' => $this->input->post('kemampuan_dalam_memecahkan_masalah'),
 				'negosiasi_' => $this->input->post('negosiasi_'),
 				'kemampuan_untuk_terus_belajar_sepanjang_hayat' => $this->input->post('kemampuan_untuk_terus_belajar_sepanjang_hayat'),
-				'input' => $this->input->post('input'),
 			];
 
 			

@@ -197,10 +197,10 @@
                                 <select  class="form-control chosen chosen-select" name="sebutkan_sumberdana_dalam_pembiayaan_kuliah_" id="sebutkan_sumberdana_dalam_pembiayaan_kuliah_" data-placeholder="Select Sebutkan Sumberdana Dalam Pembiayaan Kuliah?" test = "test" >
                                     <option value=""></option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[1] Biaya Sendiri" ? 'selected' :''; ?> value="[1] Biaya Sendiri">[1] Biaya Sendiri</option>
-                                    <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "{2] Keluarga" ? 'selected' :''; ?> value="{2] Keluarga">{2] Keluarga</option>
+                                    <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[2] Keluarga" ? 'selected' :''; ?> value="[2] Keluarga">[2] Keluarga</option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[3] Beasiswa ADIK" ? 'selected' :''; ?> value="[3] Beasiswa ADIK">[3] Beasiswa ADIK</option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[4] Beasiswa Bidikmisi" ? 'selected' :''; ?> value="[4] Beasiswa Bidikmisi">[4] Beasiswa Bidikmisi</option>
-                                    <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[5[ Beasiswa AFIRMASI" ? 'selected' :''; ?> value="[5[ Beasiswa AFIRMASI">[5[ Beasiswa AFIRMASI</option>
+                                    <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[5] Beasiswa AFIRMASI" ? 'selected' :''; ?> value="[5] Beasiswa AFIRMASI">[5] Beasiswa AFIRMASI</option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[6] Beasiswa Perusahaan Negeri" ? 'selected' :''; ?> value="[6] Beasiswa Perusahaan Negeri">[6] Beasiswa Perusahaan Negeri</option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[7] Beasiswa Perusahaan Swasta" ? 'selected' :''; ?> value="[7] Beasiswa Perusahaan Swasta">[7] Beasiswa Perusahaan Swasta</option>
                                     <option <?= $form_formtracer->sebutkan_sumberdana_dalam_pembiayaan_kuliah_ == "[8] Lainnya. . . " ? 'selected' :''; ?> value="[8] Lainnya. . . ">[8] Lainnya. . . </option>
@@ -1255,23 +1255,6 @@
                                     <div class="col-md-3 padding-left-0">
                                     <label>
                                     <input <?= $form_formtracer->kemampuan_untuk_terus_belajar_sepanjang_hayat == "5" ? "checked" : ""; ?> type="radio" class="flat-red" name="kemampuan_untuk_terus_belajar_sepanjang_hayat" value="5" > 5                                    </label>
-                                    </div>
-                                    </select>
-                                <div class="row-fluid clear-both">
-                                <small class="info help-block">
-                                </small>
-                                </div>
-                            </div>
-                        </div>
-                                                 
-                                                <div class="form-group  wrapper-options-crud">
-                            <label for="input" class="col-sm-2 control-label">Input 
-                            <i class="required">*</i>
-                            </label>
-                            <div class="col-sm-8">
-                                    <div class="col-md-3 padding-left-0">
-                                    <label>
-                                    <input <?= $form_formtracer->input == "1" ? "checked" : ""; ?> type="radio" class="flat-red" name="input" value="1" > 1                                    </label>
                                     </div>
                                     </select>
                                 <div class="row-fluid clear-both">
