@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 25, 2019 at 10:46 PM
--- Server version: 10.1.40-MariaDB-cll-lve
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: Jul 26, 2019 at 10:05 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `smkikaka_tracer`
+-- Database: `tracer_study`
 --
 
 -- --------------------------------------------------------
@@ -191,7 +191,12 @@ INSERT INTO `aauth_perms` (`id`, `name`, `definition`) VALUES
 (98, 'menu_extension', ''),
 (99, 'menu_berita', ''),
 (100, 'menu_testpage', ''),
-(101, 'menu_form_tracer', '');
+(101, 'menu_form_tracer', ''),
+(102, 'menu_report', ''),
+(103, 'menu_report_grafik', ''),
+(104, 'formtracer_view', ''),
+(105, 'formtracer_delete', ''),
+(106, 'formtracer_list', '');
 
 -- --------------------------------------------------------
 
@@ -364,7 +369,13 @@ INSERT INTO `aauth_perm_to_group` (`perm_id`, `group_id`) VALUES
 (97, 5),
 (98, 1),
 (99, 1),
-(99, 5);
+(99, 5),
+(102, 1),
+(102, 5),
+(103, 1),
+(103, 5),
+(97, 1),
+(97, 5);
 
 -- --------------------------------------------------------
 
@@ -439,8 +450,8 @@ CREATE TABLE `aauth_users` (
 --
 
 INSERT INTO `aauth_users` (`id`, `email`, `oauth_uid`, `oauth_provider`, `pass`, `username`, `full_name`, `avatar`, `banned`, `last_login`, `last_activity`, `date_created`, `forgot_exp`, `remember_time`, `remember_exp`, `verification_code`, `top_secret`, `ip_address`) VALUES
-(1, 'iqbal.revvin@gmail.com', NULL, NULL, 'af685dc72fb22be659eb8624fa160ddf43c0b25f58fc8bcae9d2e806900c2dcc', 'iqbalrevvin', 'Iqbal Revvin', '20190712013923-iqbal.png', 0, '2019-07-24 22:20:56', '2019-07-24 22:20:56', '2019-07-11 18:49:25', NULL, NULL, NULL, NULL, NULL, '::1'),
-(2, 'admin@admin.com', NULL, NULL, '52b3a93aac36bd14b3a1c9e7118f79981d14d39c6fd5118884d7544e58232a8d', 'admin', 'Administrator', 'default.png', 0, '2019-07-23 16:43:34', '2019-07-23 16:43:34', '2019-07-12 01:38:10', NULL, NULL, NULL, NULL, NULL, '::1');
+(1, 'iqbal.revvin@gmail.com', NULL, NULL, 'af685dc72fb22be659eb8624fa160ddf43c0b25f58fc8bcae9d2e806900c2dcc', 'iqbalrevvin', 'Iqbal Revvin', '20190712013923-iqbal.png', 0, '2019-07-26 23:26:46', '2019-07-26 23:26:46', '2019-07-11 18:49:25', NULL, NULL, NULL, NULL, NULL, '::1'),
+(2, 'admin@admin.com', NULL, NULL, '52b3a93aac36bd14b3a1c9e7118f79981d14d39c6fd5118884d7544e58232a8d', 'admin', 'Administrator', 'default.png', 0, '2019-07-26 23:26:27', '2019-07-26 23:26:27', '2019-07-12 01:38:10', NULL, NULL, NULL, NULL, NULL, '::1');
 
 -- --------------------------------------------------------
 
@@ -604,6 +615,13 @@ CREATE TABLE `crud` (
   `page_update` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `crud`
+--
+
+INSERT INTO `crud` (`id`, `title`, `subject`, `table_name`, `primary_key`, `page_read`, `page_create`, `page_update`) VALUES
+(1, 'Formtracer', 'Formtracer', 'formtracer', 'id', 'yes', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -640,6 +658,59 @@ CREATE TABLE `crud_field` (
   `relation_label` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `crud_field`
+--
+
+INSERT INTO `crud_field` (`id`, `crud_id`, `field_name`, `field_label`, `input_type`, `show_column`, `show_add_form`, `show_update_form`, `show_detail_page`, `sort`, `relation_table`, `relation_value`, `relation_label`) VALUES
+(1, 1, 'id', 'id', 'number', '', '', '', '', 1, '', '', ''),
+(2, 1, 'nomor_mahasiswa', 'nomor_mahasiswa', 'number', 'yes', '', '', 'yes', 2, '', '', ''),
+(3, 1, 'kode_pt', 'kode_pt', 'input', 'yes', '', '', 'yes', 3, '', '', ''),
+(4, 1, 'tahun_lulus', 'tahun_lulus', 'number', 'yes', '', '', 'yes', 4, '', '', ''),
+(5, 1, 'kode_prodi', 'kode_prodi', 'number', 'yes', '', '', 'yes', 5, '', '', ''),
+(6, 1, 'nama', 'nama', 'input', 'yes', '', '', 'yes', 6, '', '', ''),
+(7, 1, 'nomor_telephone_handphone', 'nomor_telephone_handphone', 'number', '', '', '', '', 7, '', '', ''),
+(8, 1, 'alamat_email', 'alamat_email', 'input', '', '', '', '', 8, '', '', ''),
+(9, 1, 'waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan', 'waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan', 'editor_wysiwyg', '', '', '', '', 9, '', '', ''),
+(10, 1, 'sebutkan_sumberdana_dalam_pembiayaan_kuliah_', 'sebutkan_sumberdana_dalam_pembiayaan_kuliah_', 'editor_wysiwyg', '', '', '', '', 10, '', '', ''),
+(11, 1, 'sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_', 'sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_', 'input', '', '', '', '', 11, '', '', ''),
+(12, 1, 'hubungan_antara_bidang_studi_dengan_pekerjaan_anda_', 'hubungan_antara_bidang_studi_dengan_pekerjaan_anda_', 'editor_wysiwyg', '', '', '', '', 12, '', '', ''),
+(13, 1, 'tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_', 'tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_', 'editor_wysiwyg', '', '', '', '', 13, '', '', ''),
+(14, 1, 'kira_kira_berapa_pendapatan_anda_setiap_bulannya_', 'kira_kira_berapa_pendapatan_anda_setiap_bulannya_', 'input', '', '', '', '', 14, '', '', ''),
+(15, 1, 'perkuliahan', 'perkuliahan', 'editor_wysiwyg', '', '', '', '', 15, '', '', ''),
+(16, 1, 'desmonstrasi', 'desmonstrasi', 'editor_wysiwyg', '', '', '', '', 16, '', '', ''),
+(17, 1, 'partisipasi_dalam_proyek_riset', 'partisipasi_dalam_proyek_riset', 'editor_wysiwyg', '', '', '', '', 17, '', '', ''),
+(18, 1, 'magang', 'magang', 'editor_wysiwyg', '', '', '', '', 18, '', '', ''),
+(19, 1, 'praktikum', 'praktikum', 'editor_wysiwyg', '', '', '', '', 19, '', '', ''),
+(20, 1, 'kerja_lapangan', 'kerja_lapangan', 'editor_wysiwyg', '', '', '', '', 20, '', '', ''),
+(21, 1, 'diskusi', 'diskusi', 'editor_wysiwyg', '', '', '', '', 21, '', '', ''),
+(22, 1, 'mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_', 'mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_', 'editor_wysiwyg', '', '', '', '', 22, '', '', ''),
+(23, 1, 'bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu', 'bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu', 'editor_wysiwyg', '', '', '', '', 23, '', '', ''),
+(24, 1, 'berapa_perusahaan_yang_dilamar_lewat_surat_email_', 'berapa_perusahaan_yang_dilamar_lewat_surat_email_', 'number', '', '', '', '', 24, '', '', ''),
+(25, 1, '_jumlah_perusahaan_yang_merespons_lamaran_anda_', '_jumlah_perusahaan_yang_merespons_lamaran_anda_', 'number', '', '', '', '', 25, '', '', ''),
+(26, 1, 'jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_', 'jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_', 'number', '', '', '', '', 26, '', '', ''),
+(27, 1, 'bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu', 'bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu', 'editor_wysiwyg', '', '', '', '', 27, '', '', ''),
+(28, 1, 'apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_', 'apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_', 'editor_wysiwyg', '', '', '', '', 28, '', '', ''),
+(29, 1, 'apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_', 'apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_', 'editor_wysiwyg', '', '', '', '', 29, '', '', ''),
+(30, 1, 'jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_', 'jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_', 'editor_wysiwyg', '', '', '', '', 30, '', '', ''),
+(31, 1, 'pengetahuan_di_bidang_atau_disiplin_ilmu_anda', 'pengetahuan_di_bidang_atau_disiplin_ilmu_anda', 'editor_wysiwyg', '', '', '', '', 31, '', '', ''),
+(32, 1, 'pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda', 'pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda', 'editor_wysiwyg', '', '', '', '', 32, '', '', ''),
+(33, 1, 'pengetahuan_umum', 'pengetahuan_umum', 'editor_wysiwyg', '', '', '', '', 33, '', '', ''),
+(34, 1, 'bahasa_inggris', 'bahasa_inggris', 'editor_wysiwyg', '', '', '', '', 34, '', '', ''),
+(35, 1, 'ketrampilan_internet_', 'ketrampilan_internet_', 'editor_wysiwyg', '', '', '', '', 35, '', '', ''),
+(36, 1, 'ketrampilan_komputer', 'ketrampilan_komputer', 'editor_wysiwyg', '', '', '', '', 36, '', '', ''),
+(37, 1, 'berpikir_kritis_', 'berpikir_kritis_', 'editor_wysiwyg', '', '', '', '', 37, '', '', ''),
+(38, 1, 'ketrampilan_riset', 'ketrampilan_riset', 'editor_wysiwyg', '', '', '', '', 38, '', '', ''),
+(39, 1, 'kemampuan_belajar', 'kemampuan_belajar', 'editor_wysiwyg', '', '', '', '', 39, '', '', ''),
+(40, 1, 'kemampuan_berkomunikasi', 'kemampuan_berkomunikasi', 'editor_wysiwyg', '', '', '', '', 40, '', '', ''),
+(41, 1, 'bekerja_di_bawah_tekanan', 'bekerja_di_bawah_tekanan', 'editor_wysiwyg', '', '', '', '', 41, '', '', ''),
+(42, 1, 'manajemen_waktu', 'manajemen_waktu', 'editor_wysiwyg', '', '', '', '', 42, '', '', ''),
+(43, 1, 'bekerja_secara_mandiri', 'bekerja_secara_mandiri', 'editor_wysiwyg', '', '', '', '', 43, '', '', ''),
+(44, 1, 'bekerja_dalam_tim_bekerjasama_dengan_orang_lain', 'bekerja_dalam_tim_bekerjasama_dengan_orang_lain', 'editor_wysiwyg', '', '', '', '', 44, '', '', ''),
+(45, 1, 'kemampuan_dalam_memecahkan_masalah', 'kemampuan_dalam_memecahkan_masalah', 'editor_wysiwyg', '', '', '', '', 45, '', '', ''),
+(46, 1, 'negosiasi_', 'negosiasi_', 'editor_wysiwyg', '', '', '', '', 46, '', '', ''),
+(47, 1, 'kemampuan_untuk_terus_belajar_sepanjang_hayat', 'kemampuan_untuk_terus_belajar_sepanjang_hayat', 'editor_wysiwyg', '', '', '', '', 47, '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -653,6 +724,70 @@ CREATE TABLE `crud_field_validation` (
   `validation_name` varchar(200) NOT NULL,
   `validation_value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `crud_field_validation`
+--
+
+INSERT INTO `crud_field_validation` (`id`, `crud_field_id`, `crud_id`, `validation_name`, `validation_value`) VALUES
+(1, 2, 1, 'required', ''),
+(2, 2, 1, 'max_length', '7'),
+(3, 3, 1, 'required', ''),
+(4, 3, 1, 'max_length', '6'),
+(5, 4, 1, 'required', ''),
+(6, 4, 1, 'max_length', '4'),
+(7, 5, 1, 'required', ''),
+(8, 5, 1, 'max_length', '11'),
+(9, 6, 1, 'required', ''),
+(10, 6, 1, 'max_length', '25'),
+(11, 7, 1, 'required', ''),
+(12, 7, 1, 'max_length', '11'),
+(13, 8, 1, 'required', ''),
+(14, 8, 1, 'max_length', '225'),
+(15, 9, 1, 'required', ''),
+(16, 10, 1, 'required', ''),
+(17, 11, 1, 'required', ''),
+(18, 11, 1, 'max_length', '225'),
+(19, 12, 1, 'required', ''),
+(20, 13, 1, 'required', ''),
+(21, 14, 1, 'required', ''),
+(22, 14, 1, 'max_length', '225'),
+(23, 15, 1, 'required', ''),
+(24, 16, 1, 'required', ''),
+(25, 17, 1, 'required', ''),
+(26, 18, 1, 'required', ''),
+(27, 19, 1, 'required', ''),
+(28, 20, 1, 'required', ''),
+(29, 21, 1, 'required', ''),
+(30, 22, 1, 'required', ''),
+(31, 23, 1, 'required', ''),
+(32, 24, 1, 'required', ''),
+(33, 24, 1, 'max_length', '11'),
+(34, 25, 1, 'required', ''),
+(35, 25, 1, 'max_length', '11'),
+(36, 26, 1, 'required', ''),
+(37, 26, 1, 'max_length', '11'),
+(38, 27, 1, 'required', ''),
+(39, 28, 1, 'required', ''),
+(40, 29, 1, 'required', ''),
+(41, 30, 1, 'required', ''),
+(42, 31, 1, 'required', ''),
+(43, 32, 1, 'required', ''),
+(44, 33, 1, 'required', ''),
+(45, 34, 1, 'required', ''),
+(46, 35, 1, 'required', ''),
+(47, 36, 1, 'required', ''),
+(48, 37, 1, 'required', ''),
+(49, 38, 1, 'required', ''),
+(50, 39, 1, 'required', ''),
+(51, 40, 1, 'required', ''),
+(52, 41, 1, 'required', ''),
+(53, 42, 1, 'required', ''),
+(54, 43, 1, 'required', ''),
+(55, 44, 1, 'required', ''),
+(56, 45, 1, 'required', ''),
+(57, 46, 1, 'required', ''),
+(58, 47, 1, 'required', '');
 
 -- --------------------------------------------------------
 
@@ -782,6 +917,73 @@ INSERT INTO `form` (`id`, `title`, `subject`, `table_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `formtracer`
+--
+
+CREATE TABLE `formtracer` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `nomor_mahasiswa` int(7) NOT NULL,
+  `kode_pt` varchar(6) NOT NULL,
+  `tahun_lulus` int(4) NOT NULL,
+  `kode_prodi` int(11) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `nomor_telephone_handphone` int(11) NOT NULL,
+  `alamat_email` varchar(225) NOT NULL,
+  `waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan` text NOT NULL,
+  `sebutkan_sumberdana_dalam_pembiayaan_kuliah_` text NOT NULL,
+  `sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_` varchar(225) NOT NULL,
+  `hubungan_antara_bidang_studi_dengan_pekerjaan_anda_` text NOT NULL,
+  `tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_` text NOT NULL,
+  `kira_kira_berapa_pendapatan_anda_setiap_bulannya_` varchar(225) NOT NULL,
+  `perkuliahan` text NOT NULL,
+  `desmonstrasi` text NOT NULL,
+  `partisipasi_dalam_proyek_riset` text NOT NULL,
+  `magang` text NOT NULL,
+  `praktikum` text NOT NULL,
+  `kerja_lapangan` text NOT NULL,
+  `diskusi` text NOT NULL,
+  `mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_` text NOT NULL,
+  `bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu` text NOT NULL,
+  `berapa_perusahaan_yang_dilamar_lewat_surat_email_` int(11) NOT NULL,
+  `_jumlah_perusahaan_yang_merespons_lamaran_anda_` int(11) NOT NULL,
+  `jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_` int(11) NOT NULL,
+  `bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu` text NOT NULL,
+  `apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_` text NOT NULL,
+  `apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_` text NOT NULL,
+  `jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_` text NOT NULL,
+  `pengetahuan_di_bidang_atau_disiplin_ilmu_anda` text NOT NULL,
+  `pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda` text NOT NULL,
+  `pengetahuan_umum` text NOT NULL,
+  `bahasa_inggris` text NOT NULL,
+  `ketrampilan_internet_` text NOT NULL,
+  `ketrampilan_komputer` text NOT NULL,
+  `berpikir_kritis_` text NOT NULL,
+  `ketrampilan_riset` text NOT NULL,
+  `kemampuan_belajar` text NOT NULL,
+  `kemampuan_berkomunikasi` text NOT NULL,
+  `bekerja_di_bawah_tekanan` text NOT NULL,
+  `manajemen_waktu` text NOT NULL,
+  `bekerja_secara_mandiri` text NOT NULL,
+  `bekerja_dalam_tim_bekerjasama_dengan_orang_lain` text NOT NULL,
+  `kemampuan_dalam_memecahkan_masalah` text NOT NULL,
+  `negosiasi_` text NOT NULL,
+  `kemampuan_untuk_terus_belajar_sepanjang_hayat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `formtracer`
+--
+
+INSERT INTO `formtracer` (`id`, `nomor_mahasiswa`, `kode_pt`, `tahun_lulus`, `kode_prodi`, `nama`, `nomor_telephone_handphone`, `alamat_email`, `waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan`, `sebutkan_sumberdana_dalam_pembiayaan_kuliah_`, `sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_`, `hubungan_antara_bidang_studi_dengan_pekerjaan_anda_`, `tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_`, `kira_kira_berapa_pendapatan_anda_setiap_bulannya_`, `perkuliahan`, `desmonstrasi`, `partisipasi_dalam_proyek_riset`, `magang`, `praktikum`, `kerja_lapangan`, `diskusi`, `mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_`, `bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu`, `berapa_perusahaan_yang_dilamar_lewat_surat_email_`, `_jumlah_perusahaan_yang_merespons_lamaran_anda_`, `jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_`, `bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu`, `apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_`, `apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_`, `jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_`, `pengetahuan_di_bidang_atau_disiplin_ilmu_anda`, `pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda`, `pengetahuan_umum`, `bahasa_inggris`, `ketrampilan_internet_`, `ketrampilan_komputer`, `berpikir_kritis_`, `ketrampilan_riset`, `kemampuan_belajar`, `kemampuan_berkomunikasi`, `bekerja_di_bawah_tekanan`, `manajemen_waktu`, `bekerja_secara_mandiri`, `bekerja_dalam_tim_bekerjasama_dengan_orang_lain`, `kemampuan_dalam_memecahkan_masalah`, `negosiasi_`, `kemampuan_untuk_terus_belajar_sepanjang_hayat`) VALUES
+(1, 1406082, '123456', 2014, 55201, 'Iqbal Revvin', 2147483647, 'iqbal.revvin@gmail.com', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', '[3] Beasiswa ADIK', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1000000', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sesudah Lulus', 'Pergi ke bursa/pameran kerja', 2, 2, 2, 'Saya menikah,Saya sekarang sedang mencari pekerjaan', 'Saya Sibuk Dengan Keluarga dan Anak-anak', 'Perusahaan Swasta', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(2, 1406054, '043051', 2019, 55201, 'Fikri Zakaria Rahman', 2147483647, 'fikrizakaria37@gmail.com', 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 3-6 bulan Sebelum Lulus', 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.),Lainnya', 2, 2, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Organisasi non-profit/Lembaga Swadaya Masyarakat', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '1', '5', '2', '2', '1', '1', '1', '1', '1', '3', '3', '1', '2', '1', '1', '2', '2'),
+(3, 1406068, '043051', 2018, 55201, 'Irna Restiani', 2147483647, 'irna.restiani@gmail.com', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Sangat Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Melalui iklan di koran/majalah, brosur,Mencari lewat internet/iklan online/milis', 3, 2, 2, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Instansi pemerintah(termasuk BUMN)', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '2', '2', '2', '1', '1', '1', '2', '1', '2', '2', '2', '1', '2', '2', '2', '2', '2'),
+(4, 1406019, '043051', 2018, 55201, 'unknow', 930390, 'jqdjskcjhsclkalkj@gmail.com', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', '[1] Biaya Sendiri', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1000000', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Saya Tidak Mencari Pekerjaan Sebelumnya,Melamar ke perusahaan tanpa mengetahui lowongan yang ada', 3, 3, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Instansi pemerintah(termasuk BUMN)', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2'),
+(5, 1411023, '043051', 2018, 22201, 'unknow 2', 2147483647, 'unknow23@gmail.com', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1500000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Menghubungi agen tenaga kerja komersial/swasta', 3, 3, 3, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Perusahaan Swasta', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', '1', '1', '2', '3', '1', '1', '1', '2', '3', '1', '4', '1', '2', '1', '2', '3', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `form_custom_attribute`
 --
 
@@ -798,8 +1000,8 @@ CREATE TABLE `form_custom_attribute` (
 --
 
 INSERT INTO `form_custom_attribute` (`id`, `form_field_id`, `form_id`, `attribute_value`, `attribute_label`) VALUES
-(131, 2757, 1, 'test', 'test'),
-(132, 2761, 1, 'test', 'test');
+(133, 2807, 1, 'test', 'test'),
+(134, 2811, 1, 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -820,209 +1022,209 @@ CREATE TABLE `form_custom_option` (
 --
 
 INSERT INTO `form_custom_option` (`id`, `form_field_id`, `form_id`, `option_value`, `option_label`) VALUES
-(7145, 2756, 1, 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN'),
-(7146, 2756, 1, 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN', 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN'),
-(7147, 2756, 1, 'Kira-kira 6-9 Bulan Sebelum LULUS UJIAN', 'Kira-kira 6-9 Bulan Sebelum LULUS UJIAN'),
-(7148, 2756, 1, 'Kira-kira 9-12 Bulan Sebelum LULUS UJIAN', 'Kira-kira 9-12 Bulan Sebelum LULUS UJIAN'),
-(7149, 2756, 1, 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN'),
-(7150, 2756, 1, 'Kira-kira 1-3 Bulan Sesudah LULUS UJIAN', 'Kira-kira 1-3 Bulan Sesudah LULUS UJIAN'),
-(7151, 2756, 1, 'Kira-kira 4-6 Bulan Sesudah LULUS UJIAN', 'Kira-kira 4-6 Bulan Sesudah LULUS UJIAN'),
-(7152, 2756, 1, 'Kira-kira 6-9 Bulan Sesudah LULUS UJIAN', 'Kira-kira 6-9 Bulan Sesudah LULUS UJIAN'),
-(7153, 2756, 1, 'Kira-kira 9-12 Bulan Sesudah LULUS UJIAN', 'Kira-kira 9-12 Bulan Sesudah LULUS UJIAN'),
-(7154, 2756, 1, 'Kira-kira 1 Tahun Sesudah LULUS UJIAN', 'Kira-kira 1 Tahun Sesudah LULUS UJIAN'),
-(7155, 2757, 1, '[1] Biaya Sendiri', '[1] Biaya Sendiri'),
-(7156, 2757, 1, '{2] Keluarga', '{2] Keluarga'),
-(7157, 2757, 1, '[3] Beasiswa ADIK', '[3] Beasiswa ADIK'),
-(7158, 2757, 1, '[4] Beasiswa Bidikmisi', '[4] Beasiswa Bidikmisi'),
-(7159, 2757, 1, '[5[ Beasiswa AFIRMASI', '[5[ Beasiswa AFIRMASI'),
-(7160, 2757, 1, '[6] Beasiswa Perusahaan Negeri', '[6] Beasiswa Perusahaan Negeri'),
-(7161, 2757, 1, '[7] Beasiswa Perusahaan Swasta', '[7] Beasiswa Perusahaan Swasta'),
-(7162, 2757, 1, '[8] Lainnya. . . ', '[8] Lainnya. . . '),
-(7163, 2759, 1, 'Sangat Erat', 'Sangat Erat'),
-(7164, 2759, 1, 'Erat', 'Erat'),
-(7165, 2759, 1, 'Cukup Erat', 'Cukup Erat'),
-(7166, 2759, 1, 'Kurang erat', 'Kurang erat'),
-(7167, 2759, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7168, 2760, 1, 'Setingkat Lebih Tinggi', 'Setingkat Lebih Tinggi'),
-(7169, 2760, 1, 'Tingkat Yg Sama', 'Tingkat Yg Sama'),
-(7170, 2760, 1, 'Setingkat Lebih Rendah', 'Setingkat Lebih Rendah'),
-(7171, 2760, 1, 'Tidak Perlu Pendidikan Tinggi', 'Tidak Perlu Pendidikan Tinggi'),
-(7172, 2764, 1, 'Sangat Besar', 'Sangat Besar'),
-(7173, 2764, 1, 'Besar', 'Besar'),
-(7174, 2764, 1, 'Cukup Besar', 'Cukup Besar'),
-(7175, 2764, 1, 'Kurang', 'Kurang'),
-(7176, 2764, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7177, 2765, 1, 'Sangat Besar', 'Sangat Besar'),
-(7178, 2765, 1, 'Besar', 'Besar'),
-(7179, 2765, 1, 'Cukup Besar', 'Cukup Besar'),
-(7180, 2765, 1, 'Kurang', 'Kurang'),
-(7181, 2765, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7182, 2766, 1, 'Sangat Besar', 'Sangat Besar'),
-(7183, 2766, 1, 'Besar', 'Besar'),
-(7184, 2766, 1, 'Cukup Besar', 'Cukup Besar'),
-(7185, 2766, 1, 'Kurang', 'Kurang'),
-(7186, 2766, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7187, 2767, 1, 'Sangat Besar', 'Sangat Besar'),
-(7188, 2767, 1, 'Besar', 'Besar'),
-(7189, 2767, 1, 'Cukup Besar', 'Cukup Besar'),
-(7190, 2767, 1, 'Kurang', 'Kurang'),
-(7191, 2767, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7192, 2768, 1, 'Sangat Besar', 'Sangat Besar'),
-(7193, 2768, 1, 'Besar', 'Besar'),
-(7194, 2768, 1, 'Cukup Besar', 'Cukup Besar'),
-(7195, 2768, 1, 'Kurang', 'Kurang'),
-(7196, 2768, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7197, 2769, 1, 'Sangat Besar', 'Sangat Besar'),
-(7198, 2769, 1, 'Besar', 'Besar'),
-(7199, 2769, 1, 'Cukup Besar', 'Cukup Besar'),
-(7200, 2769, 1, 'Kurang', 'Kurang'),
-(7201, 2769, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7202, 2770, 1, 'Sangat Besar', 'Sangat Besar'),
-(7203, 2770, 1, 'Besar', 'Besar'),
-(7204, 2770, 1, 'Cukup Besar', 'Cukup Besar'),
-(7205, 2770, 1, 'Kurang', 'Kurang'),
-(7206, 2770, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
-(7207, 2771, 1, 'Kira-kira 1-3 bulan Sebelum Lulus', 'Kira-kira 1-3 bulan Sebelum Lulus'),
-(7208, 2771, 1, 'Kira-kira 3-6 bulan Sebelum Lulus', 'Kira-kira 3-6 bulan Sebelum Lulus'),
-(7209, 2771, 1, 'Kira-kira 6-9 bulan Sebelum Lulus', 'Kira-kira 6-9 bulan Sebelum Lulus'),
-(7210, 2771, 1, 'Kira-kira 9-12 bulan Sebelum Lulus', 'Kira-kira 9-12 bulan Sebelum Lulus'),
-(7211, 2771, 1, 'Kira-kira 1 Tahun Lebih Sebelum Lulus', ''),
-(7212, 2771, 1, 'Kira-kira 1-3 bulan Sesudah Lulus', 'Kira-kira 1-3 bulan Sesudah Lulus'),
-(7213, 2771, 1, 'Kira-kira 3-6 bulan Sesudah Lulus', 'Kira-kira 3-6 bulan Sesudah Lulus'),
-(7214, 2771, 1, 'Kira-kira 6-9 bulan Sesudah Lulus', 'Kira-kira 6-9 bulan Sesudah Lulus'),
-(7215, 2771, 1, 'Kira-kira 9-12 bulan Sesudah Lulus', 'Kira-kira 9-12 bulan Sesudah Lulus'),
-(7216, 2771, 1, 'Kira-kira 1 Tahun Lebih Sesudah Lulus', 'Kira-kira 1 Tahun Lebih Sesudah Lulus'),
-(7217, 2771, 1, 'Saya Tidak Mencari Pekerjaan', 'Saya Tidak Mencari Pekerjaan'),
-(7218, 2772, 1, 'Saya Tidak Mencari Pekerjaan Sebelumnya', 'Saya Tidak Mencari Pekerjaan Sebelumnya'),
-(7219, 2772, 1, 'Melalui iklan di koran/majalah, brosur', 'Melalui iklan di koran/majalah, brosur'),
-(7220, 2772, 1, 'Melamar ke perusahaan tanpa mengetahui lowongan yang ada', 'Melamar ke perusahaan tanpa mengetahui lowongan yang ada'),
-(7221, 2772, 1, 'Pergi ke bursa/pameran kerja', 'Pergi ke bursa/pameran kerja'),
-(7222, 2772, 1, 'Mencari lewat internet/iklan online/milis', 'Mencari lewat internet/iklan online/milis'),
-(7223, 2772, 1, 'Dihubungi oleh perusahaan', 'Dihubungi oleh perusahaan'),
-(7224, 2772, 1, 'Menghubungi Kemenakertrans', 'Menghubungi Kemenakertrans'),
-(7225, 2772, 1, 'Menghubungi agen tenaga kerja komersial/swasta', 'Menghubungi agen tenaga kerja komersial/swasta'),
-(7226, 2772, 1, 'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas', 'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas'),
-(7227, 2772, 1, 'Menghubungi kantor kemahasiswaan/hubungan alumni', 'Menghubungi kantor kemahasiswaan/hubungan alumni'),
-(7228, 2772, 1, 'Membangun jejaring (network) sejak masih kuliah', 'Membangun jejaring (network) sejak masih kuliah'),
-(7229, 2772, 1, 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)', 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)'),
-(7230, 2772, 1, 'Membangun bisnis sendiri', 'Membangun bisnis sendiri'),
-(7231, 2772, 1, 'Melalui penempatan kerja atau magang  ', 'Melalui penempatan kerja atau magang  '),
-(7232, 2772, 1, 'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah', 'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah'),
-(7233, 2772, 1, 'Lainnya', 'Lainnya'),
-(7234, 2776, 1, 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana', 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana'),
-(7235, 2776, 1, 'Saya menikah', 'Saya menikah'),
-(7236, 2776, 1, 'Saya sibuk dengan keluarga dan anak-anak ', 'Saya sibuk dengan keluarga dan anak-anak '),
-(7237, 2776, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya sekarang sedang mencari pekerjaan'),
-(7238, 2776, 1, 'Lainnya ', 'Lainnya '),
-(7239, 2777, 1, 'Saya Sudah Bekerja', 'Saya Sudah Bekerja'),
-(7240, 2777, 1, 'Saya Sudah Menikah', 'saya Sudah Menikah'),
-(7241, 2777, 1, 'Saya Sibuk Dengan Keluarga dan Anak-anak', 'Saya Sibuk Dengan Keluarga dan Anak-anak'),
-(7242, 2777, 1, 'Saya Sekarang Sedang Mencari Pekerjaan', 'Saya Sekarang Sedang Mencari Pekerjaan'),
-(7243, 2777, 1, 'Lainnya', 'Lainnya'),
-(7244, 2778, 1, 'Instansi pemerintah(termasuk BUMN)', 'Instansi pemerintah(termasuk BUMN)'),
-(7245, 2778, 1, 'Organisasi non-profit/Lembaga Swadaya Masyarakat', 'Organisasi non-profit/Lembaga Swadaya Masyarakat'),
-(7246, 2778, 1, 'Perusahaan Swasta', 'Perusahaan Swasta'),
-(7247, 2778, 1, 'Wiraswasta/Perusahaan Sendiri', 'Wiraswasta/Perusahaan Sendiri'),
-(7248, 2778, 1, 'Lembaga Pendidikan/Sekolah', 'Lembaga Pendidikan/Sekolah'),
-(7249, 2778, 1, 'Lainnya', 'Lainnya'),
-(7250, 2779, 1, 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya'),
-(7251, 2779, 1, 'Saya belum mendapatkan pekerjaan yang lebih sesuai', 'Saya belum mendapatkan pekerjaan yang lebih sesuai'),
-(7252, 2779, 1, 'Di pekerjaan ini saya memeroleh prospek karir yang baik', 'Di pekerjaan ini saya memeroleh prospek karir yang baik'),
-(7253, 2779, 1, 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya'),
-(7254, 2779, 1, 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya', 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya'),
-(7255, 2779, 1, 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.', 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.'),
-(7256, 2779, 1, 'Pekerjaan saya saat ini lebih aman/terjamin/secure', 'Pekerjaan saya saat ini lebih aman/terjamin/secure'),
-(7257, 2779, 1, 'Pekerjaan saya saat ini lebih menarik', 'Pekerjaan saya saat ini lebih menarik'),
-(7258, 2779, 1, 'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll', 'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll'),
-(7259, 2779, 1, 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.', 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.'),
-(7260, 2779, 1, 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya', 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya'),
-(7261, 2779, 1, 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.', 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.'),
-(7262, 2779, 1, 'Lainnya', 'Lainnya'),
-(7263, 2781, 1, '1', '1'),
-(7264, 2781, 1, '2', '2'),
-(7265, 2781, 1, '3', '3'),
-(7266, 2781, 1, '4', '4'),
-(7267, 2781, 1, '5', '5'),
-(7268, 2782, 1, '1', '1'),
-(7269, 2782, 1, '2', '2'),
-(7270, 2782, 1, '3', '3'),
-(7271, 2782, 1, '4', '4'),
-(7272, 2782, 1, '5', '5'),
-(7273, 2783, 1, '1', '1'),
-(7274, 2783, 1, '2', '2'),
-(7275, 2783, 1, '3', '3'),
-(7276, 2783, 1, '4', '4'),
-(7277, 2783, 1, '5', '5'),
-(7278, 2784, 1, '1', '1'),
-(7279, 2784, 1, '2', '2'),
-(7280, 2784, 1, '3', '3'),
-(7281, 2784, 1, '4', '4'),
-(7282, 2784, 1, '5', '5'),
-(7283, 2785, 1, '1', '1'),
-(7284, 2785, 1, '2', '2'),
-(7285, 2785, 1, '3', '3'),
-(7286, 2785, 1, '4', '4'),
-(7287, 2785, 1, '5', '5'),
-(7288, 2786, 1, '1', '1'),
-(7289, 2786, 1, '2', '2'),
-(7290, 2786, 1, '3', '3'),
-(7291, 2786, 1, '4', '4'),
-(7292, 2786, 1, '5', '5'),
-(7293, 2787, 1, '1', '1'),
-(7294, 2787, 1, '2', '2'),
-(7295, 2787, 1, '3', '3'),
-(7296, 2787, 1, '4', '4'),
-(7297, 2787, 1, '5', '5'),
-(7298, 2788, 1, '1', '1'),
-(7299, 2788, 1, '2', '2'),
-(7300, 2788, 1, '3', '3'),
-(7301, 2788, 1, '4', '4'),
-(7302, 2788, 1, '5', '5'),
-(7303, 2789, 1, '1', '1'),
-(7304, 2789, 1, '2', '2'),
-(7305, 2789, 1, '3', '3'),
-(7306, 2789, 1, '4', '4'),
-(7307, 2789, 1, '5', '5'),
-(7308, 2790, 1, '1', '1'),
-(7309, 2790, 1, '2', '2'),
-(7310, 2790, 1, '3', '3'),
-(7311, 2790, 1, '4', '4'),
-(7312, 2790, 1, '5', '5'),
-(7313, 2791, 1, '1', '1'),
-(7314, 2791, 1, '2', '2'),
-(7315, 2791, 1, '3', '3'),
-(7316, 2791, 1, '4', '4'),
-(7317, 2791, 1, '5', '5'),
-(7318, 2792, 1, '1', '1'),
-(7319, 2792, 1, '2', '2'),
-(7320, 2792, 1, '3', '3'),
-(7321, 2792, 1, '4', '4'),
-(7322, 2792, 1, '5', '5'),
-(7323, 2793, 1, '1', '1'),
-(7324, 2793, 1, '2', '2'),
-(7325, 2793, 1, '3', '3'),
-(7326, 2793, 1, '4', '4'),
-(7327, 2793, 1, '5', '5'),
-(7328, 2794, 1, '1', '1'),
-(7329, 2794, 1, '2', '2'),
-(7330, 2794, 1, '3', '3'),
-(7331, 2794, 1, '4', '4'),
-(7332, 2794, 1, '5', '5'),
-(7333, 2795, 1, '1', '1'),
-(7334, 2795, 1, '2', '2'),
-(7335, 2795, 1, '3', '3'),
-(7336, 2795, 1, '4', '4'),
-(7337, 2795, 1, '5', '5'),
-(7338, 2796, 1, '1', '1'),
-(7339, 2796, 1, '2', '2'),
-(7340, 2796, 1, '3', '3'),
-(7341, 2796, 1, '4', '4'),
-(7342, 2796, 1, '5', '5'),
-(7343, 2797, 1, '1', '1'),
-(7344, 2797, 1, '2', '2'),
-(7345, 2797, 1, '3', '3'),
-(7346, 2797, 1, '4', '4'),
-(7347, 2797, 1, '5', '5');
+(7348, 2806, 1, 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN'),
+(7349, 2806, 1, 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN', 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN'),
+(7350, 2806, 1, 'Kira-kira 6-9 Bulan Sebelum LULUS UJIAN', 'Kira-kira 6-9 Bulan Sebelum LULUS UJIAN'),
+(7351, 2806, 1, 'Kira-kira 9-12 Bulan Sebelum LULUS UJIAN', 'Kira-kira 9-12 Bulan Sebelum LULUS UJIAN'),
+(7352, 2806, 1, 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN'),
+(7353, 2806, 1, 'Kira-kira 1-3 Bulan Sesudah LULUS UJIAN', 'Kira-kira 1-3 Bulan Sesudah LULUS UJIAN'),
+(7354, 2806, 1, 'Kira-kira 4-6 Bulan Sesudah LULUS UJIAN', 'Kira-kira 4-6 Bulan Sesudah LULUS UJIAN'),
+(7355, 2806, 1, 'Kira-kira 6-9 Bulan Sesudah LULUS UJIAN', 'Kira-kira 6-9 Bulan Sesudah LULUS UJIAN'),
+(7356, 2806, 1, 'Kira-kira 9-12 Bulan Sesudah LULUS UJIAN', 'Kira-kira 9-12 Bulan Sesudah LULUS UJIAN'),
+(7357, 2806, 1, 'Kira-kira 1 Tahun Sesudah LULUS UJIAN', 'Kira-kira 1 Tahun Sesudah LULUS UJIAN'),
+(7358, 2807, 1, '[1] Biaya Sendiri', '[1] Biaya Sendiri'),
+(7359, 2807, 1, '[2] Keluarga', '[2] Keluarga'),
+(7360, 2807, 1, '[3] Beasiswa ADIK', '[3] Beasiswa ADIK'),
+(7361, 2807, 1, '[4] Beasiswa Bidikmisi', '[4] Beasiswa Bidikmisi'),
+(7362, 2807, 1, '[5] Beasiswa AFIRMASI', '[5] Beasiswa AFIRMASI'),
+(7363, 2807, 1, '[6] Beasiswa Perusahaan Negeri', '[6] Beasiswa Perusahaan Negeri'),
+(7364, 2807, 1, '[7] Beasiswa Perusahaan Swasta', '[7] Beasiswa Perusahaan Swasta'),
+(7365, 2807, 1, '[8] Lainnya. . . ', '[8] Lainnya. . . '),
+(7366, 2809, 1, 'Sangat Erat', 'Sangat Erat'),
+(7367, 2809, 1, 'Erat', 'Erat'),
+(7368, 2809, 1, 'Cukup Erat', 'Cukup Erat'),
+(7369, 2809, 1, 'Kurang erat', 'Kurang erat'),
+(7370, 2809, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7371, 2810, 1, 'Setingkat Lebih Tinggi', 'Setingkat Lebih Tinggi'),
+(7372, 2810, 1, 'Tingkat Yg Sama', 'Tingkat Yg Sama'),
+(7373, 2810, 1, 'Setingkat Lebih Rendah', 'Setingkat Lebih Rendah'),
+(7374, 2810, 1, 'Tidak Perlu Pendidikan Tinggi', 'Tidak Perlu Pendidikan Tinggi'),
+(7375, 2814, 1, 'Sangat Besar', 'Sangat Besar'),
+(7376, 2814, 1, 'Besar', 'Besar'),
+(7377, 2814, 1, 'Cukup Besar', 'Cukup Besar'),
+(7378, 2814, 1, 'Kurang', 'Kurang'),
+(7379, 2814, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7380, 2815, 1, 'Sangat Besar', 'Sangat Besar'),
+(7381, 2815, 1, 'Besar', 'Besar'),
+(7382, 2815, 1, 'Cukup Besar', 'Cukup Besar'),
+(7383, 2815, 1, 'Kurang', 'Kurang'),
+(7384, 2815, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7385, 2816, 1, 'Sangat Besar', 'Sangat Besar'),
+(7386, 2816, 1, 'Besar', 'Besar'),
+(7387, 2816, 1, 'Cukup Besar', 'Cukup Besar'),
+(7388, 2816, 1, 'Kurang', 'Kurang'),
+(7389, 2816, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7390, 2817, 1, 'Sangat Besar', 'Sangat Besar'),
+(7391, 2817, 1, 'Besar', 'Besar'),
+(7392, 2817, 1, 'Cukup Besar', 'Cukup Besar'),
+(7393, 2817, 1, 'Kurang', 'Kurang'),
+(7394, 2817, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7395, 2818, 1, 'Sangat Besar', 'Sangat Besar'),
+(7396, 2818, 1, 'Besar', 'Besar'),
+(7397, 2818, 1, 'Cukup Besar', 'Cukup Besar'),
+(7398, 2818, 1, 'Kurang', 'Kurang'),
+(7399, 2818, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7400, 2819, 1, 'Sangat Besar', 'Sangat Besar'),
+(7401, 2819, 1, 'Besar', 'Besar'),
+(7402, 2819, 1, 'Cukup Besar', 'Cukup Besar'),
+(7403, 2819, 1, 'Kurang', 'Kurang'),
+(7404, 2819, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7405, 2820, 1, 'Sangat Besar', 'Sangat Besar'),
+(7406, 2820, 1, 'Besar', 'Besar'),
+(7407, 2820, 1, 'Cukup Besar', 'Cukup Besar'),
+(7408, 2820, 1, 'Kurang', 'Kurang'),
+(7409, 2820, 1, 'Tidak Sama Sekali', 'Tidak Sama Sekali'),
+(7410, 2821, 1, 'Kira-kira 1-3 bulan Sebelum Lulus', 'Kira-kira 1-3 bulan Sebelum Lulus'),
+(7411, 2821, 1, 'Kira-kira 3-6 bulan Sebelum Lulus', 'Kira-kira 3-6 bulan Sebelum Lulus'),
+(7412, 2821, 1, 'Kira-kira 6-9 bulan Sebelum Lulus', 'Kira-kira 6-9 bulan Sebelum Lulus'),
+(7413, 2821, 1, 'Kira-kira 9-12 bulan Sebelum Lulus', 'Kira-kira 9-12 bulan Sebelum Lulus'),
+(7414, 2821, 1, 'Kira-kira 1 Tahun Lebih Sebelum Lulus', ''),
+(7415, 2821, 1, 'Kira-kira 1-3 bulan Sesudah Lulus', 'Kira-kira 1-3 bulan Sesudah Lulus'),
+(7416, 2821, 1, 'Kira-kira 3-6 bulan Sesudah Lulus', 'Kira-kira 3-6 bulan Sesudah Lulus'),
+(7417, 2821, 1, 'Kira-kira 6-9 bulan Sesudah Lulus', 'Kira-kira 6-9 bulan Sesudah Lulus'),
+(7418, 2821, 1, 'Kira-kira 9-12 bulan Sesudah Lulus', 'Kira-kira 9-12 bulan Sesudah Lulus'),
+(7419, 2821, 1, 'Kira-kira 1 Tahun Lebih Sesudah Lulus', 'Kira-kira 1 Tahun Lebih Sesudah Lulus'),
+(7420, 2821, 1, 'Saya Tidak Mencari Pekerjaan', 'Saya Tidak Mencari Pekerjaan'),
+(7421, 2822, 1, 'Saya Tidak Mencari Pekerjaan Sebelumnya', 'Saya Tidak Mencari Pekerjaan Sebelumnya'),
+(7422, 2822, 1, 'Melalui iklan di koran/majalah, brosur', 'Melalui iklan di koran/majalah, brosur'),
+(7423, 2822, 1, 'Melamar ke perusahaan tanpa mengetahui lowongan yang ada', 'Melamar ke perusahaan tanpa mengetahui lowongan yang ada'),
+(7424, 2822, 1, 'Pergi ke bursa/pameran kerja', 'Pergi ke bursa/pameran kerja'),
+(7425, 2822, 1, 'Mencari lewat internet/iklan online/milis', 'Mencari lewat internet/iklan online/milis'),
+(7426, 2822, 1, 'Dihubungi oleh perusahaan', 'Dihubungi oleh perusahaan'),
+(7427, 2822, 1, 'Menghubungi Kemenakertrans', 'Menghubungi Kemenakertrans'),
+(7428, 2822, 1, 'Menghubungi agen tenaga kerja komersial/swasta', 'Menghubungi agen tenaga kerja komersial/swasta'),
+(7429, 2822, 1, 'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas', 'Memeroleh informasi dari pusat/kantor pengembangan karir fakultas/universitas'),
+(7430, 2822, 1, 'Menghubungi kantor kemahasiswaan/hubungan alumni', 'Menghubungi kantor kemahasiswaan/hubungan alumni'),
+(7431, 2822, 1, 'Membangun jejaring (network) sejak masih kuliah', 'Membangun jejaring (network) sejak masih kuliah'),
+(7432, 2822, 1, 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)', 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.)'),
+(7433, 2822, 1, 'Membangun bisnis sendiri', 'Membangun bisnis sendiri'),
+(7434, 2822, 1, 'Melalui penempatan kerja atau magang  ', 'Melalui penempatan kerja atau magang  '),
+(7435, 2822, 1, 'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah', 'Bekerja di tempat yang sama dengan tempat kerja semasa kuliah'),
+(7436, 2822, 1, 'Lainnya', 'Lainnya'),
+(7437, 2826, 1, 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana', 'Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana'),
+(7438, 2826, 1, 'Saya menikah', 'Saya menikah'),
+(7439, 2826, 1, 'Saya sibuk dengan keluarga dan anak-anak ', 'Saya sibuk dengan keluarga dan anak-anak '),
+(7440, 2826, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya sekarang sedang mencari pekerjaan'),
+(7441, 2826, 1, 'Lainnya ', 'Lainnya '),
+(7442, 2827, 1, 'Saya Sudah Bekerja', 'Saya Sudah Bekerja'),
+(7443, 2827, 1, 'Saya Sudah Menikah', 'saya Sudah Menikah'),
+(7444, 2827, 1, 'Saya Sibuk Dengan Keluarga dan Anak-anak', 'Saya Sibuk Dengan Keluarga dan Anak-anak'),
+(7445, 2827, 1, 'Saya Sekarang Sedang Mencari Pekerjaan', 'Saya Sekarang Sedang Mencari Pekerjaan'),
+(7446, 2827, 1, 'Lainnya', 'Lainnya'),
+(7447, 2828, 1, 'Instansi pemerintah(termasuk BUMN)', 'Instansi pemerintah(termasuk BUMN)'),
+(7448, 2828, 1, 'Organisasi non-profit/Lembaga Swadaya Masyarakat', 'Organisasi non-profit/Lembaga Swadaya Masyarakat'),
+(7449, 2828, 1, 'Perusahaan Swasta', 'Perusahaan Swasta'),
+(7450, 2828, 1, 'Wiraswasta/Perusahaan Sendiri', 'Wiraswasta/Perusahaan Sendiri'),
+(7451, 2828, 1, 'Lembaga Pendidikan/Sekolah', 'Lembaga Pendidikan/Sekolah'),
+(7452, 2828, 1, 'Lainnya', 'Lainnya'),
+(7453, 2829, 1, 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya'),
+(7454, 2829, 1, 'Saya belum mendapatkan pekerjaan yang lebih sesuai', 'Saya belum mendapatkan pekerjaan yang lebih sesuai'),
+(7455, 2829, 1, 'Di pekerjaan ini saya memeroleh prospek karir yang baik', 'Di pekerjaan ini saya memeroleh prospek karir yang baik'),
+(7456, 2829, 1, 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya'),
+(7457, 2829, 1, 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya', 'Saya dipromosikan ke posisi yang kurang berhubungan dengan pendidikan saya dibanding posisi sebelumnya'),
+(7458, 2829, 1, 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.', 'Saya dapat memeroleh pendapatan yang lebih tinggi di pekerjaan ini.'),
+(7459, 2829, 1, 'Pekerjaan saya saat ini lebih aman/terjamin/secure', 'Pekerjaan saya saat ini lebih aman/terjamin/secure'),
+(7460, 2829, 1, 'Pekerjaan saya saat ini lebih menarik', 'Pekerjaan saya saat ini lebih menarik'),
+(7461, 2829, 1, 'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll', 'Pekerjaan saya saat ini lebih memungkinkan saya mengambil pekerjaan tambahan/jadwal yang fleksibel, dll'),
+(7462, 2829, 1, 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.', 'Pekerjaan saya saat ini lokasinya lebih dekat dari rumah saya.'),
+(7463, 2829, 1, 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya', 'Pekerjaan saya saat ini dapat lebih menjamin kebutuhan keluarga saya'),
+(7464, 2829, 1, 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.', 'Pada awal meniti karir ini, saya harus menerima pekerjaan yang tidak berhubungan dengan pendidikan saya.'),
+(7465, 2829, 1, 'Lainnya', 'Lainnya'),
+(7466, 2831, 1, '1', '1'),
+(7467, 2831, 1, '2', '2'),
+(7468, 2831, 1, '3', '3'),
+(7469, 2831, 1, '4', '4'),
+(7470, 2831, 1, '5', '5'),
+(7471, 2832, 1, '1', '1'),
+(7472, 2832, 1, '2', '2'),
+(7473, 2832, 1, '3', '3'),
+(7474, 2832, 1, '4', '4'),
+(7475, 2832, 1, '5', '5'),
+(7476, 2833, 1, '1', '1'),
+(7477, 2833, 1, '2', '2'),
+(7478, 2833, 1, '3', '3'),
+(7479, 2833, 1, '4', '4'),
+(7480, 2833, 1, '5', '5'),
+(7481, 2834, 1, '1', '1'),
+(7482, 2834, 1, '2', '2'),
+(7483, 2834, 1, '3', '3'),
+(7484, 2834, 1, '4', '4'),
+(7485, 2834, 1, '5', '5'),
+(7486, 2835, 1, '1', '1'),
+(7487, 2835, 1, '2', '2'),
+(7488, 2835, 1, '3', '3'),
+(7489, 2835, 1, '4', '4'),
+(7490, 2835, 1, '5', '5'),
+(7491, 2836, 1, '1', '1'),
+(7492, 2836, 1, '2', '2'),
+(7493, 2836, 1, '3', '3'),
+(7494, 2836, 1, '4', '4'),
+(7495, 2836, 1, '5', '5'),
+(7496, 2837, 1, '1', '1'),
+(7497, 2837, 1, '2', '2'),
+(7498, 2837, 1, '3', '3'),
+(7499, 2837, 1, '4', '4'),
+(7500, 2837, 1, '5', '5'),
+(7501, 2838, 1, '1', '1'),
+(7502, 2838, 1, '2', '2'),
+(7503, 2838, 1, '3', '3'),
+(7504, 2838, 1, '4', '4'),
+(7505, 2838, 1, '5', '5'),
+(7506, 2839, 1, '1', '1'),
+(7507, 2839, 1, '2', '2'),
+(7508, 2839, 1, '3', '3'),
+(7509, 2839, 1, '4', '4'),
+(7510, 2839, 1, '5', '5'),
+(7511, 2840, 1, '1', '1'),
+(7512, 2840, 1, '2', '2'),
+(7513, 2840, 1, '3', '3'),
+(7514, 2840, 1, '4', '4'),
+(7515, 2840, 1, '5', '5'),
+(7516, 2841, 1, '1', '1'),
+(7517, 2841, 1, '2', '2'),
+(7518, 2841, 1, '3', '3'),
+(7519, 2841, 1, '4', '4'),
+(7520, 2841, 1, '5', '5'),
+(7521, 2842, 1, '1', '1'),
+(7522, 2842, 1, '2', '2'),
+(7523, 2842, 1, '3', '3'),
+(7524, 2842, 1, '4', '4'),
+(7525, 2842, 1, '5', '5'),
+(7526, 2843, 1, '1', '1'),
+(7527, 2843, 1, '2', '2'),
+(7528, 2843, 1, '3', '3'),
+(7529, 2843, 1, '4', '4'),
+(7530, 2843, 1, '5', '5'),
+(7531, 2844, 1, '1', '1'),
+(7532, 2844, 1, '2', '2'),
+(7533, 2844, 1, '3', '3'),
+(7534, 2844, 1, '4', '4'),
+(7535, 2844, 1, '5', '5'),
+(7536, 2845, 1, '1', '1'),
+(7537, 2845, 1, '2', '2'),
+(7538, 2845, 1, '3', '3'),
+(7539, 2845, 1, '4', '4'),
+(7540, 2845, 1, '5', '5'),
+(7541, 2846, 1, '1', '1'),
+(7542, 2846, 1, '2', '2'),
+(7543, 2846, 1, '3', '3'),
+(7544, 2846, 1, '4', '4'),
+(7545, 2846, 1, '5', '5'),
+(7546, 2847, 1, '1', '1'),
+(7547, 2847, 1, '2', '2'),
+(7548, 2847, 1, '3', '3'),
+(7549, 2847, 1, '4', '4'),
+(7550, 2847, 1, '5', '5');
 
 -- --------------------------------------------------------
 
@@ -1050,56 +1252,56 @@ CREATE TABLE `form_field` (
 --
 
 INSERT INTO `form_field` (`id`, `form_id`, `sort`, `field_name`, `input_type`, `field_label`, `placeholder`, `auto_generate_help_block`, `help_block`, `relation_table`, `relation_value`, `relation_label`) VALUES
-(2748, 1, 2698, 'nomor_mahasiswa', 'number', 'Nomor Mahasiswa', '', 'yes', '', '', '', ''),
-(2749, 1, 2699, 'kode_pt', 'input', 'Kode PT', '', 'yes', '', '', '', ''),
-(2750, 1, 2700, 'tahun_lulus', 'number', 'Tahun Lulus', '', 'yes', '', '', '', ''),
-(2751, 1, 2701, 'kode_prodi', 'number', 'Kode Prodi', '', 'yes', '', '', '', ''),
-(2752, 1, 2702, 'nama', 'input', 'Nama', '', 'yes', '', '', '', ''),
-(2753, 1, 2703, 'nomor_telephone_handphone', 'number', 'Nomor Telephone/ Handphone', '', 'yes', '', '', '', ''),
-(2754, 1, 2704, 'alamat_email', 'email', 'Alamat Email', '', 'yes', '', '', '', ''),
-(2755, 1, 2705, 'h3', 'heading', 'Kusioner Wajib', '', '', '', '', '', ''),
-(2756, 1, 2706, 'waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan', 'custom_option', 'Waktu yang dihabiskan untuk memeproleh pekerjaan', '', 'yes', '', '', '', ''),
-(2757, 1, 2707, 'sebutkan_sumberdana_dalam_pembiayaan_kuliah_', 'custom_select', 'Sebutkan sumberdana dalam pembiayaan kuliah?', '', '', 'Sebutkan sumberdana dalam pembiayaan kuliah?', '', '', ''),
-(2758, 1, 2708, 'sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_', 'yes_no', 'Sedang Bekerja (termasuk kerja sambilan dan wirausaha) ?', '', 'yes', '', '', '', ''),
-(2759, 1, 2709, 'hubungan_antara_bidang_studi_dengan_pekerjaan_anda_', 'custom_option', 'Hubungan antara bidang studi dengan pekerjaan anda?', 'Seberapa erat hubungan antara bidang studi dengan pekerjaan anda?', 'yes', '', '', '', ''),
-(2760, 1, 2710, 'tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_', 'custom_option', 'Tingkat pendidikan yang tepat/sesuai untuk pekerjaan saat ini?', 'Tingkat pendidikan apa yang paling tepat/sesuai untuk pekerjaan anda saat ini?', '', '', '', '', ''),
-(2761, 1, 2711, 'kira_kira_berapa_pendapatan_anda_setiap_bulannya_', 'input', 'Kira-kira berapa pendapatan anda setiap bulannya?', 'Isi Dengan Angka Saja Tanpa Titik/Koma', '', 'Isi Dengan Angka Saja!', '', '', ''),
-(2762, 1, 2712, 'h3', 'heading', 'Kusioner Opsional', '', '', '', '', '', ''),
-(2763, 1, 2713, 'h5', 'heading', 'Menurut anda seberapa besar penekanan pada metode pembelajaran di bawah ini dilaksanakan di program studi anda?', '', '', '', '', '', ''),
-(2764, 1, 2714, 'perkuliahan', 'custom_option', 'Perkuliahan', '', 'yes', '', '', '', ''),
-(2765, 1, 2715, 'desmonstrasi', 'custom_option', 'Desmonstrasi', '', 'yes', '', '', '', ''),
-(2766, 1, 2716, 'partisipasi_dalam_proyek_riset', 'custom_option', 'Partisipasi dalam proyek riset', '', 'yes', '', '', '', ''),
-(2767, 1, 2717, 'magang', 'custom_option', 'Magang', '', 'yes', '', '', '', ''),
-(2768, 1, 2718, 'praktikum', 'custom_option', 'Praktikum', '', 'yes', '', '', '', ''),
-(2769, 1, 2719, 'kerja_lapangan', 'custom_option', 'Kerja Lapangan', '', 'yes', '', '', '', ''),
-(2770, 1, 2720, 'diskusi', 'custom_option', 'Diskusi', '', 'yes', '', '', '', ''),
-(2771, 1, 2721, 'mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_', 'custom_select', 'Mulai mencari pekerjaan, (pekerjaan sambilan tidak dimasukan)', '', 'yes', '', '', '', ''),
-(2772, 1, 2722, 'bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu', 'custom_select_multiple', 'Bagaimana cara pekerjaan tersebut? Jawaban bisa lebih dari satu', '', 'yes', '', '', '', ''),
-(2773, 1, 2723, 'berapa_perusahaan_yang_dilamar_lewat_surat_email_', 'number', 'Berapa perusahaan yang dilamar (lewat surat/email)', '', '', 'Isi dengan jumlah perusahaan yang anda lamar sebelum anda memeroleh pekerjaan pertama?', '', '', ''),
-(2774, 1, 2724, '_jumlah_perusahaan_yang_merespons_lamaran_anda_', 'number', ' Jumlah perusahaan yang merespons lamaran anda?', '', '', 'Isi dengan jumlah perusahaan/instansi/institusi yang merespons lamaran anda?', '', '', ''),
-(2775, 1, 2725, 'jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_', 'number', 'Jumlah perusahaan yang mengundang anda untuk wawancara?', '', '', 'Jumlah banyak perusahaan/instansi/institusi yang mengundang anda untuk wawancara?', '', '', ''),
-(2776, 1, 2726, 'bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu', 'custom_select_multiple', 'Bagaimana situasi anda saat ini? Jawaban bisa lebih dari satu', '', 'yes', '', '', '', ''),
-(2777, 1, 2727, 'apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_', 'custom_select', 'Apakah anda aktif mencari pekerjaan dalam 4 minggu terkahir?', '', 'yes', '', '', '', ''),
-(2778, 1, 2728, 'apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_', 'custom_select', 'Apa jenis perusahaan tempat anda bekerja sekarang?', '', 'yes', '', '', '', ''),
-(2779, 1, 2729, 'jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_', 'custom_select', 'Jika pekerjaan tidak sesuai, kenapa mengambilnya?', '', 'yes', '', '', '', ''),
-(2780, 1, 2730, 'h4', 'heading', 'Pada saat lulus, pada tingkat mana kompetensi di bawah ini anda kuasai?(1 = Sangat Rendah, 5 = Sangat Tinggi)', '', '', '', '', '', ''),
-(2781, 1, 2731, 'pengetahuan_di_bidang_atau_disiplin_ilmu_anda', 'custom_option', 'Pengetahuan di bidang atau disiplin ilmu anda', '', 'yes', '', '', '', ''),
-(2782, 1, 2732, 'pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda', 'custom_option', 'Pengetahuan di luar bidang atau disiplin ilmu anda', '', 'yes', '', '', '', ''),
-(2783, 1, 2733, 'pengetahuan_umum', 'custom_option', 'Pengetahuan umum', '', 'yes', '', '', '', ''),
-(2784, 1, 2734, 'bahasa_inggris', 'custom_option', 'Bahasa Inggris', '', 'yes', '', '', '', ''),
-(2785, 1, 2735, 'ketrampilan_internet_', 'custom_option', 'Ketrampilan internet ', '', 'yes', '', '', '', ''),
-(2786, 1, 2736, 'ketrampilan_komputer', 'custom_option', 'Ketrampilan komputer', '', 'yes', '', '', '', ''),
-(2787, 1, 2737, 'berpikir_kritis_', 'custom_option', 'Berpikir kritis ', '', 'yes', '', '', '', ''),
-(2788, 1, 2738, 'ketrampilan_riset', 'custom_option', 'Ketrampilan riset', '', 'yes', '', '', '', ''),
-(2789, 1, 2739, 'kemampuan_belajar', 'custom_option', 'Kemampuan belajar', '', 'yes', '', '', '', ''),
-(2790, 1, 2740, 'kemampuan_berkomunikasi', 'custom_option', 'Kemampuan berkomunikasi', '', 'yes', '', '', '', ''),
-(2791, 1, 2741, 'bekerja_di_bawah_tekanan', 'custom_option', 'Bekerja di bawah tekanan', '', 'yes', '', '', '', ''),
-(2792, 1, 2742, 'manajemen_waktu', 'custom_option', 'Manajemen waktu', '', 'yes', '', '', '', ''),
-(2793, 1, 2743, 'bekerja_secara_mandiri', 'custom_option', 'Bekerja secara mandiri', '', 'yes', '', '', '', ''),
-(2794, 1, 2744, 'bekerja_dalam_tim_bekerjasama_dengan_orang_lain', 'custom_option', 'Bekerja dalam tim/bekerjasama dengan orang lain', '', 'yes', '', '', '', ''),
-(2795, 1, 2745, 'kemampuan_dalam_memecahkan_masalah', 'custom_option', 'Kemampuan dalam memecahkan masalah', '', 'yes', '', '', '', ''),
-(2796, 1, 2746, 'negosiasi_', 'custom_option', 'Negosiasi ', '', 'yes', '', '', '', ''),
-(2797, 1, 2747, 'kemampuan_untuk_terus_belajar_sepanjang_hayat', 'custom_option', 'Kemampuan untuk terus belajar sepanjang hayat', '', 'yes', '', '', '', '');
+(2798, 1, 2748, 'nomor_mahasiswa', 'number', 'Nomor Mahasiswa', '', 'yes', '', '', '', ''),
+(2799, 1, 2749, 'kode_pt', 'input', 'Kode PT', '', 'yes', '', '', '', ''),
+(2800, 1, 2750, 'tahun_lulus', 'number', 'Tahun Lulus', '', 'yes', '', '', '', ''),
+(2801, 1, 2751, 'kode_prodi', 'number', 'Kode Prodi', '', 'yes', '', '', '', ''),
+(2802, 1, 2752, 'nama', 'input', 'Nama', '', 'yes', '', '', '', ''),
+(2803, 1, 2753, 'nomor_telephone_handphone', 'number', 'Nomor Telephone/ Handphone', '', 'yes', '', '', '', ''),
+(2804, 1, 2754, 'alamat_email', 'email', 'Alamat Email', '', 'yes', '', '', '', ''),
+(2805, 1, 2755, 'h3', 'heading', 'Kusioner Wajib', '', '', '', '', '', ''),
+(2806, 1, 2756, 'waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan', 'custom_option', 'Waktu yang dihabiskan untuk memeproleh pekerjaan', '', 'yes', '', '', '', ''),
+(2807, 1, 2757, 'sebutkan_sumberdana_dalam_pembiayaan_kuliah_', 'custom_select', 'Sebutkan sumberdana dalam pembiayaan kuliah?', '', '', 'Sebutkan sumberdana dalam pembiayaan kuliah?', '', '', ''),
+(2808, 1, 2758, 'sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_', 'yes_no', 'Sedang Bekerja (termasuk kerja sambilan dan wirausaha) ?', '', 'yes', '', '', '', ''),
+(2809, 1, 2759, 'hubungan_antara_bidang_studi_dengan_pekerjaan_anda_', 'custom_option', 'Hubungan antara bidang studi dengan pekerjaan anda?', 'Seberapa erat hubungan antara bidang studi dengan pekerjaan anda?', 'yes', '', '', '', ''),
+(2810, 1, 2760, 'tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_', 'custom_option', 'Tingkat pendidikan yang tepat/sesuai untuk pekerjaan saat ini?', 'Tingkat pendidikan apa yang paling tepat/sesuai untuk pekerjaan anda saat ini?', '', '', '', '', ''),
+(2811, 1, 2761, 'kira_kira_berapa_pendapatan_anda_setiap_bulannya_', 'input', 'Kira-kira berapa pendapatan anda setiap bulannya?', 'Isi Dengan Angka Saja Tanpa Titik/Koma', '', 'Isi Dengan Angka Saja!', '', '', ''),
+(2812, 1, 2762, 'h3', 'heading', 'Kusioner Opsional', '', '', '', '', '', ''),
+(2813, 1, 2763, 'h5', 'heading', 'Menurut anda seberapa besar penekanan pada metode pembelajaran di bawah ini dilaksanakan di program studi anda?', '', '', '', '', '', ''),
+(2814, 1, 2764, 'perkuliahan', 'custom_option', 'Perkuliahan', '', 'yes', '', '', '', ''),
+(2815, 1, 2765, 'desmonstrasi', 'custom_option', 'Desmonstrasi', '', 'yes', '', '', '', ''),
+(2816, 1, 2766, 'partisipasi_dalam_proyek_riset', 'custom_option', 'Partisipasi dalam proyek riset', '', 'yes', '', '', '', ''),
+(2817, 1, 2767, 'magang', 'custom_option', 'Magang', '', 'yes', '', '', '', ''),
+(2818, 1, 2768, 'praktikum', 'custom_option', 'Praktikum', '', 'yes', '', '', '', ''),
+(2819, 1, 2769, 'kerja_lapangan', 'custom_option', 'Kerja Lapangan', '', 'yes', '', '', '', ''),
+(2820, 1, 2770, 'diskusi', 'custom_option', 'Diskusi', '', 'yes', '', '', '', ''),
+(2821, 1, 2771, 'mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_', 'custom_select', 'Mulai mencari pekerjaan, (pekerjaan sambilan tidak dimasukan)', '', 'yes', '', '', '', ''),
+(2822, 1, 2772, 'bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu', 'custom_select_multiple', 'Bagaimana cara pekerjaan tersebut? Jawaban bisa lebih dari satu', '', 'yes', '', '', '', ''),
+(2823, 1, 2773, 'berapa_perusahaan_yang_dilamar_lewat_surat_email_', 'number', 'Berapa perusahaan yang dilamar (lewat surat/email)', '', '', 'Isi dengan jumlah perusahaan yang anda lamar sebelum anda memeroleh pekerjaan pertama?', '', '', ''),
+(2824, 1, 2774, '_jumlah_perusahaan_yang_merespons_lamaran_anda_', 'number', ' Jumlah perusahaan yang merespons lamaran anda?', '', '', 'Isi dengan jumlah perusahaan/instansi/institusi yang merespons lamaran anda?', '', '', ''),
+(2825, 1, 2775, 'jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_', 'number', 'Jumlah perusahaan yang mengundang anda untuk wawancara?', '', '', 'Jumlah banyak perusahaan/instansi/institusi yang mengundang anda untuk wawancara?', '', '', ''),
+(2826, 1, 2776, 'bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu', 'custom_select_multiple', 'Bagaimana situasi anda saat ini? Jawaban bisa lebih dari satu', '', 'yes', '', '', '', ''),
+(2827, 1, 2777, 'apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_', 'custom_select', 'Apakah anda aktif mencari pekerjaan dalam 4 minggu terkahir?', '', 'yes', '', '', '', ''),
+(2828, 1, 2778, 'apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_', 'custom_select', 'Apa jenis perusahaan tempat anda bekerja sekarang?', '', 'yes', '', '', '', ''),
+(2829, 1, 2779, 'jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_', 'custom_select', 'Jika pekerjaan tidak sesuai, kenapa mengambilnya?', '', 'yes', '', '', '', ''),
+(2830, 1, 2780, 'h4', 'heading', 'Pada saat lulus, pada tingkat mana kompetensi di bawah ini anda kuasai?(1 = Sangat Rendah, 5 = Sangat Tinggi)', '', '', '', '', '', ''),
+(2831, 1, 2781, 'pengetahuan_di_bidang_atau_disiplin_ilmu_anda', 'custom_option', 'Pengetahuan di bidang atau disiplin ilmu anda', '', 'yes', '', '', '', ''),
+(2832, 1, 2782, 'pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda', 'custom_option', 'Pengetahuan di luar bidang atau disiplin ilmu anda', '', 'yes', '', '', '', ''),
+(2833, 1, 2783, 'pengetahuan_umum', 'custom_option', 'Pengetahuan umum', '', 'yes', '', '', '', ''),
+(2834, 1, 2784, 'bahasa_inggris', 'custom_option', 'Bahasa Inggris', '', 'yes', '', '', '', ''),
+(2835, 1, 2785, 'ketrampilan_internet_', 'custom_option', 'Ketrampilan internet ', '', 'yes', '', '', '', ''),
+(2836, 1, 2786, 'ketrampilan_komputer', 'custom_option', 'Ketrampilan komputer', '', 'yes', '', '', '', ''),
+(2837, 1, 2787, 'berpikir_kritis_', 'custom_option', 'Berpikir kritis ', '', 'yes', '', '', '', ''),
+(2838, 1, 2788, 'ketrampilan_riset', 'custom_option', 'Ketrampilan riset', '', 'yes', '', '', '', ''),
+(2839, 1, 2789, 'kemampuan_belajar', 'custom_option', 'Kemampuan belajar', '', 'yes', '', '', '', ''),
+(2840, 1, 2790, 'kemampuan_berkomunikasi', 'custom_option', 'Kemampuan berkomunikasi', '', 'yes', '', '', '', ''),
+(2841, 1, 2791, 'bekerja_di_bawah_tekanan', 'custom_option', 'Bekerja di bawah tekanan', '', 'yes', '', '', '', ''),
+(2842, 1, 2792, 'manajemen_waktu', 'custom_option', 'Manajemen waktu', '', 'yes', '', '', '', ''),
+(2843, 1, 2793, 'bekerja_secara_mandiri', 'custom_option', 'Bekerja secara mandiri', '', 'yes', '', '', '', ''),
+(2844, 1, 2794, 'bekerja_dalam_tim_bekerjasama_dengan_orang_lain', 'custom_option', 'Bekerja dalam tim/bekerjasama dengan orang lain', '', 'yes', '', '', '', ''),
+(2845, 1, 2795, 'kemampuan_dalam_memecahkan_masalah', 'custom_option', 'Kemampuan dalam memecahkan masalah', '', 'yes', '', '', '', ''),
+(2846, 1, 2796, 'negosiasi_', 'custom_option', 'Negosiasi ', '', 'yes', '', '', '', ''),
+(2847, 1, 2797, 'kemampuan_untuk_terus_belajar_sepanjang_hayat', 'custom_option', 'Kemampuan untuk terus belajar sepanjang hayat', '', 'yes', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1120,61 +1322,61 @@ CREATE TABLE `form_field_validation` (
 --
 
 INSERT INTO `form_field_validation` (`id`, `form_field_id`, `form_id`, `validation_name`, `validation_value`) VALUES
-(3354, 2748, 1, 'required', ''),
-(3355, 2748, 1, 'max_length', '7'),
-(3356, 2749, 1, 'required', ''),
-(3357, 2749, 1, 'max_length', '6'),
-(3358, 2749, 1, 'valid_number', ''),
-(3359, 2750, 1, 'required', ''),
-(3360, 2750, 1, 'max_length', '4'),
-(3361, 2751, 1, 'required', ''),
-(3362, 2752, 1, 'required', ''),
-(3363, 2752, 1, 'max_length', '25'),
-(3364, 2753, 1, 'required', ''),
-(3365, 2754, 1, 'required', ''),
-(3366, 2756, 1, 'required', ''),
-(3367, 2757, 1, 'required', ''),
-(3368, 2758, 1, 'required', ''),
-(3369, 2759, 1, 'required', ''),
-(3370, 2760, 1, 'required', ''),
-(3371, 2761, 1, 'required', ''),
-(3372, 2761, 1, 'valid_number', ''),
-(3373, 2764, 1, 'required', ''),
-(3374, 2765, 1, 'required', ''),
-(3375, 2766, 1, 'required', ''),
-(3376, 2767, 1, 'required', ''),
-(3377, 2768, 1, 'required', ''),
-(3378, 2769, 1, 'required', ''),
-(3379, 2770, 1, 'required', ''),
-(3380, 2771, 1, 'required', ''),
-(3381, 2772, 1, 'required', ''),
-(3382, 2773, 1, 'required', ''),
-(3383, 2773, 1, 'valid_number', ''),
-(3384, 2774, 1, 'required', ''),
-(3385, 2774, 1, 'valid_number', ''),
-(3386, 2775, 1, 'required', ''),
-(3387, 2775, 1, 'valid_number', ''),
-(3388, 2776, 1, 'required', ''),
-(3389, 2777, 1, 'required', ''),
-(3390, 2778, 1, 'required', ''),
-(3391, 2779, 1, 'required', ''),
-(3392, 2781, 1, 'required', ''),
-(3393, 2782, 1, 'required', ''),
-(3394, 2783, 1, 'required', ''),
-(3395, 2784, 1, 'required', ''),
-(3396, 2785, 1, 'required', ''),
-(3397, 2786, 1, 'required', ''),
-(3398, 2787, 1, 'required', ''),
-(3399, 2788, 1, 'required', ''),
-(3400, 2789, 1, 'required', ''),
-(3401, 2790, 1, 'required', ''),
-(3402, 2791, 1, 'required', ''),
-(3403, 2792, 1, 'required', ''),
-(3404, 2793, 1, 'required', ''),
-(3405, 2794, 1, 'required', ''),
-(3406, 2795, 1, 'required', ''),
-(3407, 2796, 1, 'required', ''),
-(3408, 2797, 1, 'required', '');
+(3409, 2798, 1, 'required', ''),
+(3410, 2798, 1, 'max_length', '7'),
+(3411, 2799, 1, 'required', ''),
+(3412, 2799, 1, 'max_length', '6'),
+(3413, 2799, 1, 'valid_number', ''),
+(3414, 2800, 1, 'required', ''),
+(3415, 2800, 1, 'max_length', '4'),
+(3416, 2801, 1, 'required', ''),
+(3417, 2802, 1, 'required', ''),
+(3418, 2802, 1, 'max_length', '25'),
+(3419, 2803, 1, 'required', ''),
+(3420, 2804, 1, 'required', ''),
+(3421, 2806, 1, 'required', ''),
+(3422, 2807, 1, 'required', ''),
+(3423, 2808, 1, 'required', ''),
+(3424, 2809, 1, 'required', ''),
+(3425, 2810, 1, 'required', ''),
+(3426, 2811, 1, 'required', ''),
+(3427, 2811, 1, 'valid_number', ''),
+(3428, 2814, 1, 'required', ''),
+(3429, 2815, 1, 'required', ''),
+(3430, 2816, 1, 'required', ''),
+(3431, 2817, 1, 'required', ''),
+(3432, 2818, 1, 'required', ''),
+(3433, 2819, 1, 'required', ''),
+(3434, 2820, 1, 'required', ''),
+(3435, 2821, 1, 'required', ''),
+(3436, 2822, 1, 'required', ''),
+(3437, 2823, 1, 'required', ''),
+(3438, 2823, 1, 'valid_number', ''),
+(3439, 2824, 1, 'required', ''),
+(3440, 2824, 1, 'valid_number', ''),
+(3441, 2825, 1, 'required', ''),
+(3442, 2825, 1, 'valid_number', ''),
+(3443, 2826, 1, 'required', ''),
+(3444, 2827, 1, 'required', ''),
+(3445, 2828, 1, 'required', ''),
+(3446, 2829, 1, 'required', ''),
+(3447, 2831, 1, 'required', ''),
+(3448, 2832, 1, 'required', ''),
+(3449, 2833, 1, 'required', ''),
+(3450, 2834, 1, 'required', ''),
+(3451, 2835, 1, 'required', ''),
+(3452, 2836, 1, 'required', ''),
+(3453, 2837, 1, 'required', ''),
+(3454, 2838, 1, 'required', ''),
+(3455, 2839, 1, 'required', ''),
+(3456, 2840, 1, 'required', ''),
+(3457, 2841, 1, 'required', ''),
+(3458, 2842, 1, 'required', ''),
+(3459, 2843, 1, 'required', ''),
+(3460, 2844, 1, 'required', ''),
+(3461, 2845, 1, 'required', ''),
+(3462, 2846, 1, 'required', ''),
+(3463, 2847, 1, 'required', '');
 
 -- --------------------------------------------------------
 
@@ -1238,10 +1440,10 @@ CREATE TABLE `form_formtracer` (
 
 INSERT INTO `form_formtracer` (`id`, `nomor_mahasiswa`, `kode_pt`, `tahun_lulus`, `kode_prodi`, `nama`, `nomor_telephone_handphone`, `alamat_email`, `waktu_yang_dihabiskan_untuk_memeproleh_pekerjaan`, `sebutkan_sumberdana_dalam_pembiayaan_kuliah_`, `sedang_bekerja_termasuk_kerja_sambilan_dan_wirausaha_`, `hubungan_antara_bidang_studi_dengan_pekerjaan_anda_`, `tingkat_pendidikan_yang_tepat_sesuai_untuk_pekerjaan_saat_ini_`, `kira_kira_berapa_pendapatan_anda_setiap_bulannya_`, `perkuliahan`, `desmonstrasi`, `partisipasi_dalam_proyek_riset`, `magang`, `praktikum`, `kerja_lapangan`, `diskusi`, `mulai_mencari_pekerjaan_pekerjaan_sambilan_tidak_dimasukan_`, `bagaimana_cara_pekerjaan_tersebut_jawaban_bisa_lebih_dari_satu`, `berapa_perusahaan_yang_dilamar_lewat_surat_email_`, `_jumlah_perusahaan_yang_merespons_lamaran_anda_`, `jumlah_perusahaan_yang_mengundang_anda_untuk_wawancara_`, `bagaimana_situasi_anda_saat_ini_jawaban_bisa_lebih_dari_satu`, `apakah_anda_aktif_mencari_pekerjaan_dalam_4_minggu_terkahir_`, `apa_jenis_perusahaan_tempat_anda_bekerja_sekarang_`, `jika_pekerjaan_tidak_sesuai_kenapa_mengambilnya_`, `pengetahuan_di_bidang_atau_disiplin_ilmu_anda`, `pengetahuan_di_luar_bidang_atau_disiplin_ilmu_anda`, `pengetahuan_umum`, `bahasa_inggris`, `ketrampilan_internet_`, `ketrampilan_komputer`, `berpikir_kritis_`, `ketrampilan_riset`, `kemampuan_belajar`, `kemampuan_berkomunikasi`, `bekerja_di_bawah_tekanan`, `manajemen_waktu`, `bekerja_secara_mandiri`, `bekerja_dalam_tim_bekerjasama_dengan_orang_lain`, `kemampuan_dalam_memecahkan_masalah`, `negosiasi_`, `kemampuan_untuk_terus_belajar_sepanjang_hayat`) VALUES
 (1, 1406082, '123456', 2014, 55201, 'Iqbal Revvin', 2147483647, 'iqbal.revvin@gmail.com', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', '[3] Beasiswa ADIK', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1000000', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sesudah Lulus', 'Pergi ke bursa/pameran kerja', 2, 2, 2, 'Saya menikah,Saya sekarang sedang mencari pekerjaan', 'Saya Sibuk Dengan Keluarga dan Anak-anak', 'Perusahaan Swasta', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(2, 1406054, '043051', 2019, 55201, 'Fikri Zakaria Rahman', 2147483647, 'fikrizakaria37@gmail.com', 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN', '{2] Keluarga', 'yes', 'Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 3-6 bulan Sebelum Lulus', 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.),Lainnya', 2, 2, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Organisasi non-profit/Lembaga Swadaya Masyarakat', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '1', '5', '2', '2', '1', '1', '1', '1', '1', '3', '3', '1', '2', '1', '1', '2', '2'),
-(3, 1406068, '043051', 2018, 55201, 'Irna Restiani', 2147483647, 'irna.restiani@gmail.com', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', '{2] Keluarga', 'yes', 'Sangat Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Melalui iklan di koran/majalah, brosur,Mencari lewat internet/iklan online/milis', 3, 2, 2, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Instansi pemerintah(termasuk BUMN)', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '2', '2', '2', '1', '1', '1', '2', '1', '2', '2', '2', '1', '2', '2', '2', '2', '2'),
+(2, 1406054, '043051', 2019, 55201, 'Fikri Zakaria Rahman', 2147483647, 'fikrizakaria37@gmail.com', 'Kira-kira 4-6 Bulan Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 3-6 bulan Sebelum Lulus', 'Melalui relasi (misalnya dosen, orang tua, saudara, teman, dll.),Lainnya', 2, 2, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Organisasi non-profit/Lembaga Swadaya Masyarakat', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '1', '5', '2', '2', '1', '1', '1', '1', '1', '3', '3', '1', '2', '1', '1', '2', '2'),
+(3, 1406068, '043051', 2018, 55201, 'Irna Restiani', 2147483647, 'irna.restiani@gmail.com', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Sangat Erat', 'Tingkat Yg Sama', '1000000', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Melalui iklan di koran/majalah, brosur,Mencari lewat internet/iklan online/milis', 3, 2, 2, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Instansi pemerintah(termasuk BUMN)', 'Di pekerjaan ini saya memeroleh prospek karir yang baik', '2', '2', '2', '1', '1', '1', '2', '1', '2', '2', '2', '1', '2', '2', '2', '2', '2'),
 (4, 1406019, '043051', 2018, 55201, 'unknow', 930390, 'jqdjskcjhsclkalkj@gmail.com', 'Kira-kira 1-3 Bulan Sebelum LULUS UJIAN', '[1] Biaya Sendiri', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1000000', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Saya Tidak Mencari Pekerjaan Sebelumnya,Melamar ke perusahaan tanpa mengetahui lowongan yang ada', 3, 3, 1, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Instansi pemerintah(termasuk BUMN)', 'Pertanyaan tidak sesuai; pekerjaan saya sekarang sudah sesuai dengan pendidikan saya', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2'),
-(5, 1411023, '043051', 2018, 22201, 'unknow 2', 2147483647, 'unknow23@gmail.com', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', '{2] Keluarga', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1500000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Menghubungi agen tenaga kerja komersial/swasta', 3, 3, 3, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Perusahaan Swasta', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', '1', '1', '2', '3', '1', '1', '1', '2', '3', '1', '4', '1', '2', '1', '2', '3', '1');
+(5, 1411023, '043051', 2018, 22201, 'unknow 2', 2147483647, 'unknow23@gmail.com', 'Kira-kira 1 Tahun Lebih Sebelum LULUS UJIAN', '[2] Keluarga', 'yes', 'Sangat Erat', 'Setingkat Lebih Tinggi', '1500000', 'Sangat Besar', 'Besar', 'Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Sangat Besar', 'Kira-kira 1-3 bulan Sebelum Lulus', 'Menghubungi agen tenaga kerja komersial/swasta', 3, 3, 3, 'Saya sekarang sedang mencari pekerjaan', 'Saya Sudah Bekerja', 'Perusahaan Swasta', 'Saya lebih suka bekerja di area pekerjaan yang tidak ada hubungannya dengan pendidikan saya', '1', '1', '2', '3', '1', '1', '1', '2', '3', '1', '4', '1', '2', '1', '2', '3', '1');
 
 -- --------------------------------------------------------
 
@@ -1298,23 +1500,25 @@ INSERT INTO `menu` (`id`, `label`, `type`, `icon_color`, `link`, `sort`, `parent
 (5, 'Front Page Builder', 'menu', 'default', 'administrator/page', 5, 0, 'fa-file-o', 1, 1),
 (6, 'Form Tracer Builder', 'menu', 'default', 'administrator/form', 7, 0, 'fa-newspaper-o', 1, 1),
 (7, 'Berita', 'menu', 'default', 'administrator/blog', 8, 0, 'fa-file-text-o', 1, 1),
-(8, 'Menu', 'menu', '', 'administrator/menu', 9, 0, 'fa-bars', 1, 1),
-(9, 'Auth', 'menu', '', '', 10, 0, 'fa-shield', 1, 1),
-(10, 'User', 'menu', '', 'administrator/user', 11, 9, '', 1, 1),
-(11, 'Groups', 'menu', '', 'administrator/group', 12, 9, '', 1, 1),
-(12, 'Access', 'menu', '', 'administrator/access', 13, 9, '', 1, 1),
-(13, 'Permission', 'menu', '', 'administrator/permission', 14, 9, '', 1, 1),
-(14, 'API Keys', 'menu', '', 'administrator/keys', 15, 9, '', 1, 1),
-(15, 'Extension', 'menu', 'default', 'administrator/extension', 16, 0, 'fa-puzzle-piece', 1, 1),
-(16, 'OTHER', 'label', '', '', 17, 0, '', 1, 1),
-(17, 'Settings', 'menu', 'text-red', 'administrator/setting', 18, 0, 'fa-circle-o', 1, 1),
-(18, 'Web Documentation', 'menu', 'text-blue', 'administrator/doc/web', 19, 0, 'fa-circle-o', 1, 1),
-(19, 'API Documentation', 'menu', 'text-yellow', 'administrator/doc/api', 20, 0, 'fa-circle-o', 1, 1),
+(8, 'Menu', 'menu', '', 'administrator/menu', 10, 0, 'fa-bars', 1, 1),
+(9, 'Auth', 'menu', '', '', 11, 0, 'fa-shield', 1, 1),
+(10, 'User', 'menu', '', 'administrator/user', 12, 9, '', 1, 1),
+(11, 'Groups', 'menu', '', 'administrator/group', 13, 9, '', 1, 1),
+(12, 'Access', 'menu', '', 'administrator/access', 14, 9, '', 1, 1),
+(13, 'Permission', 'menu', '', 'administrator/permission', 15, 9, '', 1, 1),
+(14, 'API Keys', 'menu', '', 'administrator/keys', 16, 9, '', 1, 1),
+(15, 'Extension', 'menu', 'default', 'administrator/extension', 17, 0, 'fa-puzzle-piece', 1, 1),
+(16, 'OTHER', 'label', '', '', 18, 0, '', 1, 1),
+(17, 'Settings', 'menu', 'text-red', 'administrator/setting', 19, 0, 'fa-circle-o', 1, 1),
+(18, 'Web Documentation', 'menu', 'text-blue', 'administrator/doc/web', 20, 0, 'fa-circle-o', 1, 1),
+(19, 'API Documentation', 'menu', 'text-yellow', 'administrator/doc/api', 21, 0, 'fa-circle-o', 1, 1),
 (20, 'Home', 'menu', '', '/', 1, 0, '', 2, 1),
 (21, 'Berita', 'menu', 'default', 'blog', 3, 0, '', 2, 1),
 (22, 'Dashboard', 'menu', '', 'administrator/dashboard', 4, 0, '', 2, 1),
-(23, 'Daftar Mahasiswa', 'menu', 'default', '#', 6, 0, 'fa-users', 1, 1),
-(24, 'Form Tracer', 'menu', 'default', 'page/tracer-responden', 2, 0, '', 2, 1);
+(23, 'Daftar Mahasiswa', 'menu', 'default', 'administrator/formtracer', 6, 0, 'fa-users', 1, 1),
+(24, 'Form Tracer', 'menu', 'default', 'page/tracer-responden', 2, 0, '', 2, 1),
+(25, 'Report', 'menu', 'default', '#', 9, 0, 'fa-bar-chart', 1, 1),
+(26, 'Report Grafik', 'menu', 'default', 'administrator/report/grafik', 25, 25, 'fa-pie-chart', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1594,6 +1798,12 @@ ALTER TABLE `form`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `formtracer`
+--
+ALTER TABLE `formtracer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `form_custom_attribute`
 --
 ALTER TABLE `form_custom_attribute`
@@ -1691,13 +1901,13 @@ ALTER TABLE `aauth_groups`
 -- AUTO_INCREMENT for table `aauth_login_attempts`
 --
 ALTER TABLE `aauth_login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `aauth_perms`
 --
 ALTER TABLE `aauth_perms`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `aauth_pms`
@@ -1751,7 +1961,7 @@ ALTER TABLE `cc_options`
 -- AUTO_INCREMENT for table `crud`
 --
 ALTER TABLE `crud`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `crud_custom_option`
@@ -1763,13 +1973,13 @@ ALTER TABLE `crud_custom_option`
 -- AUTO_INCREMENT for table `crud_field`
 --
 ALTER TABLE `crud_field`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `crud_field_validation`
 --
 ALTER TABLE `crud_field_validation`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `crud_input_type`
@@ -1790,28 +2000,34 @@ ALTER TABLE `form`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `formtracer`
+--
+ALTER TABLE `formtracer`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `form_custom_attribute`
 --
 ALTER TABLE `form_custom_attribute`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `form_custom_option`
 --
 ALTER TABLE `form_custom_option`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7348;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7551;
 
 --
 -- AUTO_INCREMENT for table `form_field`
 --
 ALTER TABLE `form_field`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2798;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2848;
 
 --
 -- AUTO_INCREMENT for table `form_field_validation`
 --
 ALTER TABLE `form_field_validation`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3409;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3464;
 
 --
 -- AUTO_INCREMENT for table `form_formtracer`
@@ -1829,7 +2045,7 @@ ALTER TABLE `keys`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `menu_type`
