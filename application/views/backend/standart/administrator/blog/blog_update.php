@@ -230,7 +230,7 @@
 
     $(document).on('keyup', '#title', function(event) {
       var link = $(this).val().replaceAll(/[^0-9a-z]/gi, '-').replaceAll(/_+/g, '-').toLowerCase();
-      var title = $(this).val().replaceAll(/[^0-9a-z ]/gi, ' ').toLowerCase().replaceAll(/ +/g, ' ').toLowerCase();
+      var title = $(this).val().replaceAll(/[^0-9a-z ]/gi, ' ').replaceAll(/ +/g, ' ');
 
       $('.blog-slug').html(link);
       $('#title').val(title);
